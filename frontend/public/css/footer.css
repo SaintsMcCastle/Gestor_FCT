@@ -1,0 +1,37 @@
+footer {
+    background-color: #226666; /* Fondo rojo vino */
+    color: #fff; /* Texto blanco */
+    padding: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0   ; /* Agrega un margen a los bordes del footer */
+}
+
+footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer ul li {
+    margin-bottom: 10px; /* Espacio entre elementos de la lista */
+}
+
+footer ul li a {
+    text-decoration: none; /* Elimina el subrayado */
+    color: #fff; /* Texto blanco */
+    display: block; /* Muestra los enlaces como bloques para ocupar toda la anchura disponible */
+}
+
+footer ul li a:hover {
+    color: #fff; /* Color blanco para los enlaces normales y al pasar el ratón sobre ellos */
+}
+footer .logo {
+    text-align: center;
+}
+
+.footer-column {
+    margin-left: 20px; /* Ajusta el margen izquierdo para separar los divs de la imagen central */
+    margin-right: 20px; /* Ajusta el margen derecho para separar los divs de la imagen central */
+}

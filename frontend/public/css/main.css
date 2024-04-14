@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 100px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #006444;
+}
+
+.user {
+    position: relative;
+}
+
+.user img {
+    width: 80px; 
+    height: 80px; 
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: absolute;
+    top: 102px; 
+    right: 0;
+    background-color: #333;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+.dropdown form button {
+    background-color: transparent; /* Establece el color de fondo como transparente */
+    border: none; /* Elimina cualquier borde */
+    outline: none; /* Elimina el estilo de resaltado al enfocar */
+    cursor: pointer; /* Cambia el cursor a un puntero al pasar por encima */
+    color: #fff; 
+}
+
+/* Agrega estilos para mostrar el dropdown cuando tiene la clase 'active' */
+.dropdown.active {
+    display: block;
+}
+
+.dropdown li {
+    padding: 10px 20px;
+}
+
+.dropdown li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.dropdown li:hover {
+    background-color: #444;
+}
+
+.dropdown.active {
+    display: block;
+}

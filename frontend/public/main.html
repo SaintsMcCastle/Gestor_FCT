@@ -1,0 +1,116 @@
+<!-- main.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/footer.css">
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/img/logo_Color_IES.png" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="user">
+            <!-- Utiliza un identificador único para la imagen del usuario -->
+            <img id="userImage" src="#" alt="Usuario">
+            <ul class="dropdown" id="userDropdown"> <!-- Agrega un identificador al dropdown -->
+                <li><a href="#">Detalles</a></li>
+                <li>
+                    <form id="logoutForm" action="/api/v1/auth/logout" method="post"> <!-- Formulario para logout -->
+                        <button type="submit" id="logoutButton">Cerrar Sesión</button> <!-- Botón para logout -->
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Contenido principal aquí -->
+
+    <footer>
+        <div class="footer-column">
+            <ul>
+                <li><a href="#">Legal Warning</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Cookies Policy</a></li>
+                <li><a href="#">Quality Policy</a></li>
+            </ul>
+        </div>
+        <div class="logo">
+            <img src="/img/logo_Color_IES.png" alt="Logo">
+        </div>
+        <div class="footer-column">
+            <ul>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Quienes Somos</a></li>
+                <li><a href="#">Número de Teléfono</a></li>
+                <li><a href="#">Ubicación: Calle Falsa 123, Ciudad Ficticia</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Script para obtener la imagen del usuario -->
+    <script>
+
+        // Obtener la referencia al dropdown y a la imagen del usuario
+        const userDropdown = document.getElementById('userDropdown');
+        const userImage = document.getElementById('userImage');
+
+        // Manejar el evento de clic en la imagen del usuario
+        userImage.addEventListener('click', function() {
+            // Alternar la clase 'active' del dropdown para mostrarlo u ocultarlo
+            userDropdown.classList.toggle('active');
+        });
+
+        // Ocultar el dropdown cuando se hace clic fuera de él
+        document.addEventListener('click', function(event) {
+            if (!userImage.contains(event.target) && !userDropdown.contains(event.target)) {
+                userDropdown.classList.remove('active');
+            }
+        });
+
+        // Función para obtener el valor de un parámetro de la URL
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Obtener el ID del usuario de la URL
+        const userId = getParameterByName('userId');
+        console.log(userId);
+
+        // Realizar la solicitud AJAX para obtener la imagen del usuario
+        fetch(`/api/v1/home/users/${userId}/picture`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('No se pudo obtener la imagen del usuario');
+                }
+                return response.blob(); // Convertir la respuesta en un objeto Blob
+            })
+            .then(blob => {
+                // Crear una URL para la imagen Blob
+                const imageUrl = URL.createObjectURL(blob);
+                // Actualizar la fuente de la imagen del usuario con la URL creada
+                document.getElementById('userImage').src = imageUrl;
+            })
+            .catch(error => console.error('Error al obtener la imagen del usuario:', error));
+    </script>
+</body>
+</html>

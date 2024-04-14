@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="/css/stylesFormLogReg.css">
+</head>
+<body>
+    <div class="container">
+        <img src="/img/logo_IES.png" alt="Logo" class="logo">
+        <div class="main">
+		    <div class="signup">
+                <form action="/api/v1/auth/register" method="POST" enctype="multipart/form-data">
+                    <label for="chk">REGISTRATE</label>
+                    <div class="avatar-container">
+                        <label for="avatarInput">
+                            <img src="/img/avatar-default-symbolic.svg" alt="Avatar predeterminado" id="avatarImage">
+                        </label>
+                        <h3>(Imagen opcional)</h3>  
+                        <input type="file" name="picture" id="avatarInput" accept="image/*" style="display: none;"> <!-- Input oculto para seleccionar imagen -->
+                    </div>
+                    <input type="text" name="firstName" placeholder="Nombre..." required>
+                    <input type="text" name="direccion" placeholder="Dirección..." required >
+                    <input type="email" name="email" placeholder="Correo Electronico..." required >
+                    <input type="text" name="username" placeholder="Nombre de usuario..." required >
+                    <input type="password" name="password" placeholder="Contraseña..." required>
+                    
+                    <select name="roles" id="">
+                        <option value="admin">ADMIN</option>
+                        <option value="profesor">PROFESOR</option>
+                        <option value="alumno" selected>ALUMNO</option>
+                    </select>
+                    <button style="background-color: #007bff;">Registrarse</button> <!-- Botón de registro azul -->
+                    <label>
+                        <a href="/api/v1/auth/login" class="login">Ya tengo cuenta</a>
+                    </label>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Script para mostrar la imagen seleccionada
+        document.getElementById('avatarInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('avatarImage').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>

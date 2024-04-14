@@ -1,0 +1,662 @@
+[2024-04-14T00:33:04.862] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T01:32:31.333] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T02:39:05.614] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T02:42:28.071] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T02:44:17.600] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T02:44:18.793] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T12:30:20.733] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:09:03.188] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:09:29.913] [FATAL] error - ERROR GENERAL, ERROR INDEX / ReferenceError: path is not defined
+    at exports.getMainPage (F:\DAW2\GestorFCT\backend\controllers\user.controller.js:41:18)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+[2024-04-14T16:10:09.790] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\frontEnd\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\frontEnd\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:10:26.650] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\controllers\frontEnd\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\controllers\\frontEnd\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:10:59.067] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\controllers\frontEnd\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\controllers\\frontEnd\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:11:05.427] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\controllers\frontEnd\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\controllers\\frontEnd\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:11:37.878] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\controllers\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\controllers\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:11:49.062] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:12:05.114] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\controllers\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\controllers\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:12:06.604] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\controllers\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\controllers\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:12:14.415] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:12:27.960] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\controllers\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\controllers\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:12:28.512] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\controllers\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\controllers\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:12:28.699] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\controllers\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\controllers\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:12:29.031] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\controllers\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\controllers\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:12:29.365] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\controllers\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\controllers\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:12:29.527] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\controllers\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\controllers\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:12:35.679] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:12:36.213] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:12:36.394] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:12:36.556] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:12:36.720] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:12:36.895] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:18:04.048] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\frontEnd\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\frontEnd\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:18:04.441] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\frontEnd\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\frontEnd\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:18:04.615] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\frontEnd\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\frontEnd\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:18:04.777] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\frontEnd\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\frontEnd\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:18:04.940] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\frontEnd\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\frontEnd\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:18:05.102] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\frontEnd\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\frontEnd\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:19:02.940] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\frontEnd\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\frontEnd\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:19:03.654] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\frontEnd\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\frontEnd\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:19:05.763] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\frontEnd\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\frontEnd\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T16:20:49.151] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:20:49.153] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:20:49.166] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:21:08.896] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:08.899] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:08.905] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:21:09.206] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:09.206] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:09.215] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:21:09.368] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:09.371] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:09.378] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:21:09.526] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:09.529] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:09.534] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:21:10.722] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:10.726] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:10.730] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:21:10.743] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:11.169] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:11.172] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:11.176] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:21:11.184] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:11.404] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:11.410] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:11.412] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:21:11.422] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:11.623] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:11.625] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:11.630] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:21:11.642] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:11.848] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:11.852] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:21:11.856] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:21:11.864] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:22:07.503] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:22:07.504] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:22:07.510] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:22:07.949] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:22:07.953] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:22:07.955] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:22:08.130] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:22:08.134] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:22:08.137] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:22:08.280] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:22:08.282] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:22:08.289] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:22:08.463] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:22:08.467] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:22:08.469] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:22:24.383] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:23:27.642] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:23:27.670] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:23:28.272] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:23:28.299] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:23:28.453] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:23:28.482] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:23:28.638] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T16:23:28.682] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T16:23:43.833] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T18:10:09.866] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T18:10:10.368] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T18:10:10.525] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T18:10:12.838] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T18:11:09.393] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T18:11:38.037] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T18:11:38.289] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T18:11:38.456] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T18:11:38.608] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T18:11:38.741] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T18:11:49.058] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T18:27:32.947] [FATAL] error - ERROR GENERAL, ERROR INDEX / URIError: Failed to decode param '%3C%=%20userId%20%%3E'
+    at decodeURIComponent (<anonymous>)
+    at decode_param (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:172:12)
+    at Layer.match (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:148:15)
+    at matchLayer (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:585:18)
+    at next (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:226:15)
+    at Function.handle (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:328:13)
+    at F:\DAW2\GestorFCT\backend\node_modules\express\lib\router\index.js:286:9 {
+  statusCode: 400,
+  status: 400
+}
+[2024-04-14T19:29:11.392] [FATAL] error - ERROR GENERAL, ERROR INDEX / [Error: ENOENT: no such file or directory, stat 'F:\DAW2\GestorFCT\backend\frontEnd\public\main.html'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'F:\\DAW2\\GestorFCT\\backend\\frontEnd\\public\\main.html',
+  expose: false,
+  statusCode: 404,
+  status: 404
+}
+[2024-04-14T20:12:38.796] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:13:03.231] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:26:15.847] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:26:19.696] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:50:42.087] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:51:55.706] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:51:56.240] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:52:51.593] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:52:52.446] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:52:52.638] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:54:06.442] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:54:06.780] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:54:06.995] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:54:07.164] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:54:22.052] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:54:22.484] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:54:22.676] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:54:22.808] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor
+[2024-04-14T20:55:58.446] [ERROR] error - Se ha accedido a una ruta que no existe en el servidor

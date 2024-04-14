@@ -1,0 +1,174 @@
+/* Import font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    padding: 50px;
+    background:  #9198e5 ;   
+}
+
+html {
+    height: 100%;
+}
+
+img {
+    width:16px;
+    cursor: pointer;
+}
+.filtros{
+    text-align: center;
+    margin-top: 10px;
+}
+.filtros a{
+    color: white;
+    text-decoration: none;
+}
+.login-box {
+    margin-top: 10%;
+    margin-left: 50%;
+    top:50%;
+    left:50%;
+    width: 400px;
+    padding:40px;
+    transform: translate(-50%,-50%);
+    background: #242026;
+    box-shadow: 0 15px 25px rgba(143,124,236,0.7);
+    border-radius: 10px;
+}
+.login-box h2{
+    margin:0 0 30px;
+    padding:0;
+    color:#fff;
+    text-align: center;
+}
+.login-box .user-box input {
+    /*position:relative;*/
+    width: 100%;
+    padding: 10px 0;
+    font-size:16px;
+    color:#fff;
+    margin-bottom:30px;
+    border:none;
+    border-bottom:1px solid #fff;
+    outline:none;
+    background: transparent;
+}
+.login-box .user-box label {
+    position:relative;
+    left:0;
+    top:-60px;
+    padding:10px 0;
+    font-size:16px;
+    color:#fff;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.button-form {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+
+#register {
+    font-size: 14px;
+    text-decoration: none;
+    color:#CBBDDB;
+    margin:auto;
+    width: 60%;
+    text-align: center;
+}
+
+#register a {
+    margin:auto;
+    color:#8F7CEC;
+    text-decoration: none;
+}
+
+/* General styles end */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 15px;
+}
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1f2327;
+    padding-block: 15px;
+}
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+}
+.logo {
+    margin-right: 50px;
+}
+.list {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+#toggler,
+.navbar label {
+    display: none;
+}
+@media screen and (max-width: 600px) {
+    .menu {
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+    }
+    .list {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    .navbar label {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    #toggler:checked ~ .menu {
+        max-height: 100%;
+    }
+}
+/* footer */
+#icons{
+    width: 60%;
+    margin: 0px auto;
+    background-color: rgba(84, 97, 240, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .icons{
+    width: 50%;
+    text-align: center;
+    padding: 40px;
+  }
+  
+  #worlds{
+    width: 70%;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-self: center;
+  
+  }
+  #shoe{
+    text-align: center;
+    margin-left: 200px;
+  }

@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f1f1f1;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px; /* Cambiado a un ancho máximo para evitar que el formulario se estire demasiado */
+    width: 90%; /* Cambiado a un ancho relativo para que el formulario sea más flexible */
+    text-align: center; /* Centrar los elementos horizontalmente */
+}
+
+.logo {
+    width: 100px; 
+    height: auto; /* Altura automática para mantener la proporción */
+    margin-bottom: 20px; 
+}
+
+/* Estilos CSS para la imagen predeterminada */
+.avatar-container {
+    text-align: center; 
+}
+
+#avatarImage {
+    width: 80px; 
+    height: 80px; 
+    border-radius: 50%; /* Para hacerla redonda */
+    border: 2px solid #007bff; /* Borde azul */
+    cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+    display: inline-block; /* Permite centrar verticalmente */
+}
+
+.signup {
+    text-align: center;
+}
+
+.signup label {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.signup input[type="text"],
+.signup input[type="email"],
+.signup input[type="password"],
+.signup select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.signup button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.signup button:hover {
+    background-color: #45a049;
+}
+
+.login {
+    color: #333;
+    text-decoration: none;
+}
+
+.login:hover {
+    text-decoration: underline;
+}
+
+/* Reglas para el input de imagen */
+.signup input[type="file"] {
+    margin-top: 10px; /* Espacio adicional encima del input de imagen */
+}
+
+/* Reglas para hacer la página responsive */
+@media screen and (max-width: 600px) {
+    .main {
+        width: 80%;
+    }
+}

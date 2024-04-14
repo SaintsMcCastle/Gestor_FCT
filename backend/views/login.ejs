@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    
+    <link rel="stylesheet" href="/css/stylesFormLog.css">
+</head>
+<body>
+    <div class="main">
+        <div class="signup">
+            <form action="/api/v1/auth/login" method="POST">
+                <% if(msg!=""){ %>
+                    <h3 style="color:green;text-align: center;"><%= msg %></h3>
+                <% } %>
+                <label for="chk">LOGIN</label>
+                <input type="text" placeholder="Usuario..." name="username" required>
+                <br>
+                <input type="password" placeholder="Contraseña..." name="password" required>
+                <br>        
+                <button style="background-color: #007bff;">Entrar</button>
+                <label>
+                    <a href="/api/v1/auth/register" class="login">¿No tienes cuenta?</a>
+                </label>
+            </form>
+        </div>
+</div>
+</body>
+</html>
