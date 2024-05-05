@@ -14,6 +14,7 @@ function wrapAsync(fn){
         fn(req,res,next).catch(e => next(e))
     }
   }
+  
 const extractToken = function(req) {
     if(req.headers.authorization && req.headers.authorization.split(" ")[0] == "Bearer"){
         //Bearer kalñsdjkfalñksdjflñaksjdflñkajsdflñkajsdñfkl
@@ -28,12 +29,11 @@ const extractToken = function(req) {
 
 
 exports.showLogin = function(req,res){
-    const { msg="" } = req.query 
-    res.render("login.ejs",{ msg })
+    res.sendFile(path.join(__dirname, "../../frontend/public/login.html"));
 }
 
-exports.showRegister = function(req,res){
-    res.render("register.ejs")
+exports.showRegister = function(req, res) {
+    res.sendFile(path.join(__dirname, "../../frontend/public/register.html"));
 }
 
 

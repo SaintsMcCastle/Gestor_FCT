@@ -3,83 +3,15 @@ const version = "v1";
 const logger = require("../logger");
 const fs = require('fs');
 const path = require('path');
+const bcrypt = require("bcrypt")
 
-// const imageCache = {}; // Cache para almacenar imágenes decodificadas
+
 
 function wrapAsync(fn) {
     return function(req, res, next) {
         fn(req, res, next).catch(e => next(e));
     }
 }
-
-// Determine el tipo de contenido de la imagen basándose en la extensión del archivo o en metadatos
-// function getImageContentType(filename) {
-//     const extension = filename.split('.').pop().toLowerCase();
-//     switch (extension) {
-//         case 'jpg':
-//         case 'jpeg':
-//             return 'image/jpeg';
-//         case 'png':
-//             return 'image/png';
-//         case 'gif':
-//             return 'image/gif';
-//         default:
-//             return 'image/jpeg'; // Tipo de contenido predeterminado
-//     }
-// }
-
-// Enviar la imagen con el tipo de contenido determinado
-// function sendImageResponse(res, img, contentType) {
-//     res.writeHead(200, {
-//         'Content-Type': contentType,
-//         'Content-Length': img.length
-//     });
-//     res.end(img);
-// }
-
-// En user.controller.js
-exports.getMainPage = function(req, res) {
-    const filePath = path.resolve(__dirname, '../../frontEnd/public/main.html');
-    res.sendFile(filePath);
-};
-
-
-// exports.getUserPicture = wrapAsync(async (req, res, next) => {
-//     try {
-//         const userId = req.params.userId;
-
-//         // Verifica si la imagen está en caché
-//         if (imageCache[userId]) {
-//             const cachedImage = imageCache[userId];
-//             return sendImageResponse(res, cachedImage.img, cachedImage.contentType);
-//         }
-
-//         const user = await UserModel.findById(userId);
-
-//         if (!user) {
-//             return res.status(404).json({ message: 'Usuario no encontrado' });
-//         }
-
-//         if (!user.picture) {
-//             return res.status(404).json({ message: 'El usuario no tiene una imagen asociada' });
-//         }
-
-//         // Decodifica la imagen base64
-//         const img = Buffer.from(user.picture, 'base64');
-
-//         // Determinar el tipo de contenido de la imagen
-//         const contentType = getImageContentType(user.pictureFilename);
-
-//         // Almacena la imagen decodificada en caché
-//         imageCache[userId] = { img, contentType };
-
-//         // Envía la imagen en la respuesta con el tipo de contenido determinado
-//         sendImageResponse(res, img, contentType);
-//     } catch (error) {
-//         console.error('Error al obtener la imagen del usuario:', error);
-//         return res.status(500).json({ error: 'Error interno del servidor' });
-//     }
-// });
 
 
 exports.getUserPicture = wrapAsync(async (req, res, next) => {
@@ -108,3 +40,48 @@ exports.getUserPicture = wrapAsync(async (req, res, next) => {
         return res.status(500).json({ error: 'Error interno del servidor' });
     }
   });  
+
+
+// Mostrar formulario para editar un usuario
+exports.loadEdit = wrapAsync(async function (req, res) {
+    const { id } = req.params;
+    const user = await UserModel.findById(id);
+    res.render('editUser.ejs', { usuario: user });
+});
+
+// // Editar un usuario por su ID
+// exports.edit = wrapAsync(async function(req, res) {
+
+//     try {
+//         const { id } = req.params;
+
+//         const { username, firstName, direccion, email, password } = req.body;
+//         let userData = { username, firstName, direccion, email };
+
+//         if (req.file) {
+
+//             // Leer el archivo de la imagen de manera asíncrona
+//             const imageData = await fs.readFile(req.file.path);
+//             // Convertir la imagen a base64
+//             const base64Image = imageData.toString('base64');
+//             // Asignar la imagen al campo 'picture' del usuario
+//             userData.picture = base64Image;
+//             // Eliminar el archivo temporal de la imagen cargada
+//             await fs.unlink(req.file.path); // Usar await para esperar a que fs.unlink se complete
+//         }
+
+//         // Si se proporciona una nueva contraseña, encriptarla y actualizarla
+//         if (password) {
+//             const hashedPassword = await bcrypt.hash(password, 12);
+//             userData.password = hashedPassword;
+//         }
+
+//         // Actualizar el usuario
+//         const uActualizado = await UserModel.findByIdAndUpdate(id, userData, { runValidators: true, new: true });
+
+//         res.redirect(`/api/${version}/home/main?userId=${uActualizado._id}`);
+//     } catch (error) {
+//         console.error('Error al editar el usuario:', error);
+//         res.status(500).json({ error: error.message });
+//     }
+// });

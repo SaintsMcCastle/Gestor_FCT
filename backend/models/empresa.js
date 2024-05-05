@@ -70,7 +70,7 @@ Empresa.create = async function(newEmpresa,result){
     })
 }
 
-Empresa.findByUsername = async function(name_param, result){
+Empresa.findByName = async function(name_param, result){
     const empresaFound = await Empresa.findOne({ name: name_param})
     if(empresaFound){
         result(empresaFound,null)

@@ -1,93 +1,86 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
+
+/* Estilos para el contenido principal */
+main {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.buscar-container {
+    display: grid;
     justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+
+
+#inputBuscarNombre {
+    padding: 8px 10px;
+    border-radius: 20px;
+    margin-bottom: 30px; 
+    border: 1px solid #dfe1e5; /* Añade un borde */
+    font-size: 16px; /* Ajusta el tamaño de la fuente */
+}
+
+/* Estilos para el formulario de búsqueda */
+#formBuscar {
+    display: flex;
     align-items: center;
 }
 
-.logo img {
-    width: 100px;
+/* Estilos para los select del formulario */
+#formBuscar select {
+    border-radius: 20px;
+    padding: 8px; /* Espacio interno */
+    margin-right: 20px; 
+    margin-left: 10px; 
+
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+
+/* Estilo para el botón de buscar */
+#formBuscar button {
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 8px 20px; /* Espacio interno */
+    background-color: #333; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    border: none; /* Quita los bordes */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 20px;
+/* Estilo para el botón de buscar al pasar el ratón */
+#formBuscar button:hover {
+    background-color: #006444; /* Cambia el color de fondo al pasar el ratón */
 }
 
-nav ul li:last-child {
-    margin-right: 0;
+/* Estilos para la tabla de empresas */
+#tablaEmpresas {
+    width: calc(100% - 40px); /* Resta 40px al 100% del ancho para dejar espacio en los lados */
+    margin: 0 auto 20px; /* Centra la tabla horizontalmente y agrega espacio abajo */
+    position: relative; /* Agrega posición relativa */
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
+#tablaEmpresas th,
+#tablaEmpresas td {
+    padding: 10px; /* Espacio interno de las celdas */
+    text-align: center; /* Centra el texto dentro de las celdas */
+    border: 1px solid #ddd; /* Borde de las celdas */
 }
 
-a:hover {
-    color: #006444;
+#tablaEmpresas th {
+    background-color: #f2f2f2; /* Color de fondo del encabezado */
 }
 
-.user {
-    position: relative;
+#tablaEmpresas tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color de fondo de las filas pares */
 }
 
-.user img {
-    width: 80px; 
-    height: 80px; 
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.dropdown {
-    position: absolute;
-    top: 102px; 
-    right: 0;
-    background-color: #333;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: none;
-}
-
-.dropdown form button {
-    background-color: transparent; /* Establece el color de fondo como transparente */
-    border: none; /* Elimina cualquier borde */
-    outline: none; /* Elimina el estilo de resaltado al enfocar */
-    cursor: pointer; /* Cambia el cursor a un puntero al pasar por encima */
-    color: #fff; 
-}
-
-/* Agrega estilos para mostrar el dropdown cuando tiene la clase 'active' */
-.dropdown.active {
-    display: block;
-}
-
-.dropdown li {
-    padding: 10px 20px;
-}
-
-.dropdown li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.dropdown li:hover {
-    background-color: #444;
-}
-
-.dropdown.active {
-    display: block;
+#tablaEmpresas tbody tr:hover {
+    background-color: #f2f2f2; /* Cambia el color de fondo al pasar el ratón */
 }

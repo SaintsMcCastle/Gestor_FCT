@@ -19,8 +19,9 @@ const session = require("express-session")
 
 //IMPORTAMOS LAS RUTAS NECESARIAS PARA SU USO
 const authRoutes = require("./routes/auth.routes")
+const mainRoutes = require("./routes/main.routes")
 const userRoutes = require("./routes/user.routes")
-
+const empresasRoutes = require("./routes/empresa.routes")
 //MW
 const cors=require("cors")
 
@@ -42,7 +43,7 @@ const corsOptions={
 
 
 app.use(cors(corsOptions))
-app.use(methodOverride("_method")) // action="/starwars?_method=DELETE" method=POST
+app.use(methodOverride("_method"))  
 app.use(express.urlencoded({extended:true})) //recuperar request.body
 app.use(session({secret:"mipwddesession"}))
 app.use(express.json()) //usaremos JSON para los request.body
@@ -52,9 +53,26 @@ app.use(express.static(path.join(__dirname, '../frontend/public')));
 app.set("views",path.join(__dirname,"views")) //localizamos el directorio de vistas
 app.set("view engine","ejs") //npm i ejs -- configurar motor de vistas como EJS
 
-const anyadirMorgan = morgan("combined", {
-    stream: fs.createWriteStream("./access.log", { flags: "a" }),
-});
+
+
+const accessLogStream = fs.createWriteStream(
+    path.join(__dirname, "access.log"),
+    { flags: "a" }
+  );
+  const errorLogStream = fs.createWriteStream(
+    path.join(__dirname, "error.log"),
+    { flags: "a" }
+  );
+
+
+
+  const anyadirMorgan = morgan("combined", {
+    stream: accessLogStream,errorLogStream,
+    skip: function (req, res) {
+      return res.statusCode < 400;
+    },
+  });
+ 
 
 async function conectarMongoDB(){
     return mongoose.connect(`mongodb://127.0.0.1:27017/${database}`)    
@@ -64,7 +82,10 @@ async function conectarMongoDB(){
 //RUTAS DE LOS USUARIOS PARA AUTENTICARSE
 
 app.use(`/api/${version}/auth`,authRoutes)
-app.use(`/api/${version}/home`,userRoutes)
+app.use(`/api/${version}/home`,mainRoutes)
+app.use(`/api/${version}/users`,userRoutes)
+app.use(`/api/${version}/empresas`,empresasRoutes)
+
 
 /* CONTROLADORES - RUTAS DE USERS */
 app.get("/",(req,res)=>{

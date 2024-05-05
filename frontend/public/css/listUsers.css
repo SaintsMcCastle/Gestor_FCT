@@ -1,130 +1,175 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
-
-* {
- 
-    font-family: 'Montserrat', sans-serif;
-
-}
-
-
 body {
-    background: linear-gradient(#131315, #9198e5);    
-    
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-
-html {
-    height: 100%;
-}
-
-img {
-    width:16px;
-    cursor: pointer;
-}
-
-.login-box {
-    position:absolute;
-    top:50%;
-    left:50%;
-    width: 400px;
-    padding:40px;
-    transform: translate(-50%,-50%);
-    background: #242026;
-    box-shadow: 0 15px 25px rgba(143,124,236,0.7);
-    border-radius: 10px;
-}
-
-
-.login-box h2{
-    margin:0 0 30px;
-    padding:0;
-    color:#fff;
+h1{
     text-align: center;
 }
 
-
-.login-box .user-box input {
-    /*position:relative;*/
+table {
     width: 100%;
-    padding: 10px 0;
-    font-size:16px;
-    color:#fff;
-    margin-bottom:30px;
-    border:none;
-    border-bottom:1px solid #fff;
-    outline:none;
-    background: transparent;
-}
-
-
-.login-box .user-box label {
-    position:relative;
-    left:0;
-    top:-60px;
-    padding:10px 0;
-    font-size:16px;
-    color:#fff;
-    pointer-events: none;
-    transition: 0.5s;
-}
-
-
-.login-box .user-box input:focus~label,
-.login-box .user-box input:valid~label {
-    top:-85px;
-    left:0;
-    color:#8F7CEC;
-    font-size:12px;
-}
-
-
-
-#submit {
-    cursor:pointer;
-    background: #131315;
-    padding: 10px 20px;
-    color: #CBBDDB;
-    font-size: 16px;
-    text-decoration: none;
-    text-transform: uppercase;
+    border-collapse: collapse;
+    border-radius: 8px;
     overflow: hidden;
-    transition: .5s;
-    letter-spacing: 4px;
-    border: 1px solid #8F7CEC;
-    margin: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-
-#submit:hover {
-    background: #8F7CEC;
-    color:#fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #8F7CEC, 0 0 25px #8F7CEC, 0
-                0 50px #8F7CEC, 0 0 100px #8F7CEC;
+th, td {
+    border: none;
+    padding: 12px 16px;
 }
 
+th {
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative; /* Agregamos posición relativa para el icono */
+}
 
-.button-form {
+th .fa-sort {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+th.sorted-asc .fa-sort-up,
+th.sorted-desc .fa-sort-down {
+    display: none; /* Ocultamos ambos iconos por defecto */
+}
+
+th.sorted-asc .fa-sort-up {
+    display: inline-block; /* Mostramos el icono de flecha hacia arriba cuando está ordenado ascendentemente */
+}
+
+th.sorted-desc .fa-sort-down {
+    display: inline-block; /* Mostramos el icono de flecha hacia abajo cuando está ordenado descendentemente */
+}
+
+td {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+tr:nth-child(even) td {
+    background-color: #f2f2f2;
+}
+
+/* Estilos de la paginación */
+.pagination {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
     margin-top: 20px;
 }
 
-
-#register {
-    font-size: 14px;
+.page-link {
+    padding: 8px 12px; /* Reducimos el espacio de relleno */
     text-decoration: none;
-    color:#CBBDDB;
-    margin:auto;
-    width: 60%;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+    cursor: pointer;
+    border-radius: 50px; /* Bordes redondeados */
+    transition: background-color 0.3s; /* Transición de color al pasar el ratón */
+}
+
+.page-link.active {
+    background-color: #4CAF50; /* Color verde para la página activa */
+    color: white;
+    border-color: #4CAF50;
+}
+
+.page-link:hover {
+    background-color: #45a049; /* Cambio de color al pasar el ratón */
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* Estilos del icono de crear */
+.create-icon {
+    position: fixed; /* Fijamos la posición del icono */
+    bottom: 20px; /* Distancia desde abajo */
+    right: 20px; /* Distancia desde la derecha */
+    background-color: #4CAF50; /* Color de fondo */
+    color: #fff; /* Color del icono */
+    border: none;
+    border-radius: 50%; /* Forma circular */
+    width: 50px; /* Ancho */
+    height: 50px; /* Alto */
+    font-size: 24px; /* Tamaño del icono */
+    cursor: pointer; /* Cursor al pasar por encima */
+    display: flex; /* Mostrar como flexbox */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+    z-index: 1000; /* Colocar encima de otros elementos */
+}
+
+.create-icon:hover {
+    background-color: #45a049; /* Cambio de color al pasar el ratón */
+}
+
+
+/* Estilos para el pop-up */
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    z-index: 9999; /* Asegura que el pop-up esté por encima de todo */
+    overflow: hidden;
+}
+
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.5s forwards; /* Animación de entrada */
+}
+
+@keyframes slideIn {
+    from {
+        transform: translate(-50%, -100%); /* Desde arriba de la página */
+    }
+    to {
+        transform: translate(-50%, -50%); /* Al centro de la página */
+    }
+}
+
+.popup-buttons {
+    margin-top: 20px;
     text-align: center;
 }
 
-#register a {
-    margin:auto;
-    color:#8F7CEC;
-    text-decoration: none;
+/* Estilos para botones del pop-up */
+.popup-buttons button {
+    margin: 0 10px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
+.popup-buttons button.primary {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.popup-buttons button.secondary {
+    background-color: #f44336;
+    color: #fff;
+}

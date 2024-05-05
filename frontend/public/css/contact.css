@@ -1,0 +1,101 @@
+/* Estilos para la página de contacto */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Estilos para el contenedor principal */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px); /* Ajustar la altura mínima */
+    flex-direction: column; /* Alinear elementos verticalmente */
+}
+
+
+
+/* Estilos para el contenedor de los formularios y el mapa */
+.contacto-container {
+    width: 90%; /* Ancho del contenedor */
+    max-width: 800px; /* Ancho máximo */
+    display: flex;
+    flex-wrap: wrap; /* Permitir que los elementos se ajusten */
+}
+
+.formulario,
+.info {
+    width: calc(50% - 10px); /* Ancho del 50% menos el margen */
+    margin-bottom: 20px; /* Espacio entre los elementos */
+    border-radius: 10px;
+}
+
+.formulario {
+    background: linear-gradient(135deg, rgb(17, 225, 156), #226666); /* Verde y amarillo */
+}
+
+.formulario form {
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.formulario label,
+.formulario input,
+.formulario textarea {
+    display: block;
+    margin-bottom: 10px;
+    width: 80%;
+}
+
+.formulario input,
+.formulario textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.formulario input[type="submit"] {
+    background-color: #226666; 
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.info {
+    background-color: #f2f2f2; /* Gris claro */
+    text-align: center; /* Alinea el texto al centro */
+    border-radius: 10px;
+}
+
+.info h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.info p {
+    margin-bottom: 20px;
+}
+
+.contact-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contact-list li {
+    margin-bottom: 10px;
+}
+
+.contact-list i {
+    margin-right: 10px;
+}
+
+/* Estilos para el mapa */
+.map-container {
+    width: 90%; /* Ancho del contenedor */
+    max-width: 100%; /* Ancho máximo */
+    border-radius: 10px;
+}

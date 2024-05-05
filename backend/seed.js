@@ -10,18 +10,18 @@ mongoose.connect("mongodb://127.0.0.1:27017/EMPRESAS_FCT")
 
 const empresas = [
     {
-        CIF:"Empresa1234",
-        name:"prueba",
+        CIF:"C878908913",
+        name:"Delfin",
         city:"Villena",
-        personInCharge:"Santos",
-        personInChargeID:"S4837423239237",
-        type:"familiar",
-        family:"Agricola",
-        address:"Calle nueva",
+        personInCharge:"Jorge",
+        personInChargeID:"L00908977",
+        type:"empresa",
+        family:"coches",
+        address:"Calle Inventada",
         area:"Publica",
         postalCode:0o3400,
-        phone:799529416,
-        email:"prueba@gmail.com"
+        phone:7007369301,
+        email:"delfin@gmail.com"
     }, 
 ]
 
