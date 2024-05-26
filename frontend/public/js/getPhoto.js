@@ -171,9 +171,14 @@ document.addEventListener('DOMContentLoaded', async function() {
             // Ocultar el enlace a listado de usuarios si el rol es "alumno"
             if (userRole === "alumno") {
                 const userListLink = document.getElementById('userListLink');
-                if (userListLink) {
-                    userListLink.style.display = 'none';
-                }
+                const empresasLink = document.getElementById('empresasListLink');
+                const vincularLink = document.getElementById('vincularLink');
+
+                
+                userListLink.style.display = 'none';
+                empresasLink.style.display = 'none';
+                vincularLink.style.display = 'none';
+                
             }
         } catch (error) {
             console.error('Error:', error);

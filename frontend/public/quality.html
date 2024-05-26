@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vincular Alumnos a Empresa</title>
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/linkUser.css">
-    <link rel="stylesheet" href="/css/footer.css">
+    <title>Quality Policy</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Cabecera -->
     <header>
         <div class="logo">
             <img src="/img/logo_Color_IES.png" alt="Logo">
@@ -38,34 +34,19 @@
         </div>
     </header>
 
-    <!-- Contenido Principal -->
-    <main class="main">
-        <h1>Vincular Alumnos a Empresa</h1>
-        <form action="/api/v1/empresas/linkStudents" method="POST">
-            <label for="company">Selecciona Empresa:</label>
-            <select name="companyId" id="company">
-                <% companies.forEach(company => { %>
-                    <option value="<%= company._id %>"><%= company.name %></option>
-                <% }); %>
-            </select>
-
-            <label for="students">Selecciona Alumnos:</label>
-            <select name="studentIds" id="students" multiple>
-                <% students.forEach(student => { %>
-                    <option 
-                        value="<%= student._id %>" 
-                        data-username="<%= student.username %>" 
-                        data-firstname="<%= student.firstName %>"
-                        data-email="<%= student.email %>"
-                    ><%= student.username %></option>
-                <% }); %>
-            </select>
-
-            <button type="submit">Vincular Alumnos</button>
-        </form>
+    <main>
+        <h1>Política de Calidad</h1>
+        <p>En nuestra empresa estamos comprometidos con la calidad en todos los aspectos de nuestros servicios. A continuación, detallamos nuestra política de calidad.</p>
+        <h2>Compromiso con la Calidad</h2>
+        <p>Nos esforzamos por proporcionar servicios y productos que cumplan y superen las expectativas de nuestros clientes. Mantenemos un enfoque de mejora continua en todos nuestros procesos.</p>
+        <h2>Objetivos de Calidad</h2>
+        <p>Establecemos objetivos claros y medibles para asegurar la calidad de nuestros servicios. Estos objetivos son revisados y actualizados regularmente para reflejar las necesidades y expectativas de nuestros clientes.</p>
+        <h2>Responsabilidad y Participación</h2>
+        <p>Todos los empleados de nuestra empresa están comprometidos con la política de calidad. Fomentamos la participación y el compromiso de todo el personal para lograr los objetivos de calidad establecidos.</p>
+        <h2>Mejora Continua</h2>
+        <p>Nos dedicamos a la mejora continua de nuestros procesos, productos y servicios. Utilizamos las opiniones de los clientes, auditorías internas y externas para identificar áreas de mejora.</p>
     </main>
 
-    <!-- Pie de página -->
     <footer>
         <div class="footer-column">
             <ul>
@@ -87,18 +68,5 @@
             </ul>
         </div>
     </footer>
-    <script>
-        // Ordenar las opciones del select alfabéticamente
-        document.addEventListener('DOMContentLoaded', function() {
-            const selectElement = document.getElementById('students');
-            const options = Array.from(selectElement.options);
-
-            options.sort((a, b) => a.text.localeCompare(b.text));
-            selectElement.innerHTML = '';
-            options.forEach(option => selectElement.add(option));
-        });
-    </script>
-    <script src="/js/getPhoto.js"></script>
-    <script src="/js/getRole.js"></script>
 </body>
 </html>

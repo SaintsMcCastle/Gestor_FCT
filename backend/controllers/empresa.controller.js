@@ -3,6 +3,7 @@ const UserModel = require("../models/user");
 const version = "v1";
 const logger = require("../logger");
 const fs = require('fs');
+const Empresa = require("../models/empresa");
 
 function wrapAsync(fn) {
     return function(req, res, next) {
@@ -148,49 +149,6 @@ exports.loadLinkStudents = wrapAsync(async function (req, res) {
     res.render('linkStudents.ejs', { companies, students });
 });
 
-// exports.linkStudents = wrapAsync(async function (req, res) {
-//     const { companyId, studentIds } = req.body;
-
-//     try {
-//         const company = await EmpresaModel.findById(companyId);
-//         if (!company) {
-//             return res.status(404).send({ message: "Company not found" });
-//         }
-
-//         // Asegurarse de que studentIds es un array
-//         const studentIdsArray = Array.isArray(studentIds) ? studentIds : [studentIds];
-
-//         // Verificar si alguno de los estudiantes ya está vinculado a una empresa
-//         const studentsWithCompany = await UserModel.find({
-//             _id: { $in: studentIdsArray },
-//             empresa: { $ne: null }
-//         });
-
-//         if (studentsWithCompany.length > 0) {
-//             return res.status(400).send({
-//                 message: "Algunos estudiantes ya están vinculados a una empresa.",
-//                 students: studentsWithCompany.map(student => student.username)
-//             });
-//         }
-
-//         // Agregar los estudiantes al array de students sin duplicados
-//         await EmpresaModel.findByIdAndUpdate(
-//             companyId,
-//             { $addToSet: { students: { $each: studentIdsArray } } }
-//         );
-
-//         // Actualizar el campo empresa en cada usuario
-//         await UserModel.updateMany(
-//             { _id: { $in: studentIdsArray } },
-//             { empresa: companyId }
-//         );
-
-//         res.redirect(`/api/v1/empresas/${company._id}/view`); // Redirigir después de vincular
-//     } catch (error) {
-//         res.status(500).send({ message: error.message });
-//     }
-// });
-
 exports.linkStudents = wrapAsync(async function (req, res) {
     const { companyId, studentIds } = req.body;
 
@@ -242,5 +200,19 @@ exports.linkStudents = wrapAsync(async function (req, res) {
         res.redirect(`/api/v1/empresas/${company._id}/view`);
     } catch (error) {
         res.status(500).send({ message: error.message });
+    }
+});
+
+// Controlador para eliminar un estudiante de una empresa
+exports.desvincularEstudiante = wrapAsync(async function (req, res) {
+    const { empresaId, estudianteId } = req.params;
+
+    try {
+        // Desvincular al estudiante de la empresa y del campo empresa del usuario
+        await EmpresaModel.desvincularEstudiante(empresaId, estudianteId);
+
+        res.status(200).json({ message: "Estudiante desvinculado exitosamente de la empresa" });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 });

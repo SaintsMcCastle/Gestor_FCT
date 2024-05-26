@@ -19,6 +19,7 @@ table {
 th, td {
     border: none;
     padding: 12px 16px;
+    text-align: center; /* Alineación centrada del contenido */
 }
 
 th {
@@ -27,8 +28,10 @@ th {
     cursor: pointer;
     font-weight: bold;
     text-transform: uppercase;
-    position: relative; /* Agregamos posición relativa para el icono */
+    position: relative;
 }
+
+
 
 th .fa-sort {
     position: absolute;

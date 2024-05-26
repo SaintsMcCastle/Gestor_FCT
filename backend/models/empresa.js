@@ -76,7 +76,34 @@ empresaSchema.pre('remove', async function(next) {
     next();
 });
 
+// Método personalizado en el modelo de Empresa para desvincular un estudiante
+empresaSchema.statics.desvincularEstudiante = async function(empresaId, estudianteId) {
+    // Encuentra la empresa por su ID
+    const empresa = await this.findById(empresaId);
+    if (!empresa) {
+        throw new Error("Empresa no encontrada");
+    }
+
+    // Encuentra el índice del estudiante en la lista de estudiantes de la empresa
+    const index = empresa.students.findIndex(student => student._id.toString() === estudianteId);
+    if (index === -1) {
+        throw new Error("Estudiante no encontrado en la lista de estudiantes de la empresa");
+    }
+
+    // Elimina al estudiante de la lista de estudiantes de la empresa
+    empresa.students.splice(index, 1);
+
+    // Guarda los cambios en la empresa
+    await empresa.save();
+
+    // Actualiza el campo de empresa a null en el usuario correspondiente
+    await mongoose.model('User').findByIdAndUpdate(estudianteId, { empresa: null });
+};
+
 const Empresa = mongoose.model("Empresa", empresaSchema)
+
+
+
 
 //Registrar Usuarios    
 Empresa.create = async function(newEmpresa,result){

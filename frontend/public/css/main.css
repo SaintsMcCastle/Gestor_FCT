@@ -156,3 +156,35 @@ main {
         padding: 8px 10px;
     }
 }
+
+/* Media queries para resoluciones menores a 448px */
+@media (max-width: 448px) {
+    .buscar-container {
+        padding: 10px;
+    }
+
+    #formBuscar label {
+        margin-bottom: 5px;
+    }
+
+    #inputBuscarNombre {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    #formBuscar select,
+    #formBuscar button {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    #tablaEmpresas th,
+    #tablaEmpresas td {
+        padding: 6px 8px;
+        font-size: 14px;
+    }
+
+    #mensajeNoResultados {
+        font-size: 16px;
+    }
+}

@@ -63,7 +63,7 @@
             <tbody>
                 <% usuarios.slice(0, 10).forEach((usuario, index) => { %>
                     <tr>
-                        <td><%= usuario.createdAt %></td>
+                        <td><%= usuario.createdAt.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' }) %></td>
                         <td><%= usuario.firstName %></td>
                         <td><%= usuario.username %></td>
                         <td><%= usuario.email %></td>
@@ -231,5 +231,7 @@
         closePopup();
     }
 </script>
+<script src="/js/getPhoto.js"></script>
+<script src="/js/getRole.js"></script>
 </body>
 </html>

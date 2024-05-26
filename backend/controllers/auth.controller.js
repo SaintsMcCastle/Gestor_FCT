@@ -55,7 +55,7 @@ exports.register = wrapAsync(async function(req, res) {
         }
         else{
             console.log("no hay foto")
-            const defaultImagePath = path.join(__dirname, "../../frontend/public/img/edit.png");
+            const defaultImagePath = path.join(__dirname, "../../frontend/public/img/pred.jpg");
             const defaultImageData = await fs.readFile(defaultImagePath);
             const base64DefaultImage = defaultImageData.toString('base64');
             newUser.picture = base64DefaultImage;

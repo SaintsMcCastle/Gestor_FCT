@@ -35,3 +35,10 @@ footer .logo {
     margin-left: 20px; /* Ajusta el margen izquierdo para separar los divs de la imagen central */
     margin-right: 20px; /* Ajusta el margen derecho para separar los divs de la imagen central */
 }
+
+@media (max-width: 768px) {
+    footer {
+        padding: 10px;
+        font-size: 14px;
+    }
+}

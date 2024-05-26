@@ -44,5 +44,7 @@ router.delete("/admin/empresas/:id", [authJwt.verifyToken, authJwt.isAdminOrProf
 router.get("/linkStudents", [authJwt.verifyToken, authJwt.isAdminOrProfesor], empresaCtrl.loadLinkStudents);
 router.post("/linkStudents", [authJwt.verifyToken, authJwt.isAdminOrProfesor], empresaCtrl.linkStudents);
 
+router.post("/:empresaId/eliminar-estudiante/:estudianteId", [authJwt.verifyToken, authJwt.isAdminOrProfesor], empresaCtrl.desvincularEstudiante)
+
 
 module.exports = router

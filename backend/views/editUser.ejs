@@ -11,7 +11,21 @@
     <link rel="stylesheet" href="/css/footer.css">
 
     <style>
+        .form-group {
+            position: relative;
+        }
 
+        .form-group i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .form-group input[type="password"] {
+            padding-right: 30px;
+        }
     </style>
 </head>
 <body>
@@ -43,6 +57,7 @@
     </header>
 
     <!-- Contenido principal,Muchas cosas por modificar todavia,ENCONTRAR FALLO DE ACTUALIZAR -->
+    <!-- Contenido principal -->
     <main>
         <div class="container">
             <h1>Editar Usuario</h1>
@@ -51,10 +66,17 @@
                     <label for="username">Nombre de Usuario:</label>
                     <input type="text" id="username" name="username" value="<%= usuario.username %>" required>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="password">Contraseña:</label>
+                    <label for="password">Contraseña nueva:</label>
                     <input type="password" id="password" name="password">
+                    <i class="fa fa-eye" id="togglePassword"></i>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmar Contraseña:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword">
+                    <i class="fa fa-eye" id="toggleConfirmPassword"></i>
                 </div>
 
                 <div class="form-group">
@@ -83,7 +105,7 @@
                         <input type="file" name="picture" id="avatarInput" accept="image/*" style="display: none;">
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <button type="submit" class="btn">Guardar Cambios</button>
                 </div>
@@ -116,6 +138,22 @@
 
     <!-- Scripts -->
     <script>
+        // Script para mostrar y ocultar la contraseña
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        document.getElementById('toggleConfirmPassword').addEventListener('click', function() {
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirmPasswordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        // Script para previsualizar la imagen de perfil
         document.getElementById('avatarInput').addEventListener('change', function(event) {
             const file = event.target.files[0];
             if (file) {
@@ -126,10 +164,12 @@
                 reader.readAsDataURL(file);
             }
         });
+
         document.getElementById('avatarImage').addEventListener('click', function() {
             document.getElementById('avatarInput').click();
         });
     </script>
-
+    <script src="/js/getPhoto.js"></script>
+    <script src="/js/getRole.js"></script>
 </body>
 </html>

@@ -90,9 +90,14 @@ exports.loadEdit = wrapAsync(async function (req, res) {
 
 exports.edit = async function(req, res) {
     const { id } = req.params;
-    const { username, password, firstName, direccion, email } = req.body;
+    const { username, password, confirmPassword, firstName, direccion, email } = req.body;
 
     try {
+        // Verificar que las contraseñas coincidan
+        if (password && password !== confirmPassword) {
+            return res.status(400).send({ message: "Las contraseñas no coinciden" });
+        }
+
         // Encriptar la contraseña si se ha proporcionado
         let hashedPassword;
         if (password) {
@@ -126,8 +131,7 @@ exports.edit = async function(req, res) {
         res.redirect(`/api/v1/users/${user._id}/view`); // Redirige a donde quieras después de editar
     } catch (error) {
         res.status(500).send({ message: error.message });
-    }
-};
+}};
 
 
 exports.loadView = wrapAsync(async function (req, res) {

@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vincular Alumnos a Empresa</title>
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/linkUser.css">
-    <link rel="stylesheet" href="/css/footer.css">
+    <title>Cookies Policy</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Cabecera -->
     <header>
         <div class="logo">
             <img src="/img/logo_Color_IES.png" alt="Logo">
@@ -38,34 +34,19 @@
         </div>
     </header>
 
-    <!-- Contenido Principal -->
-    <main class="main">
-        <h1>Vincular Alumnos a Empresa</h1>
-        <form action="/api/v1/empresas/linkStudents" method="POST">
-            <label for="company">Selecciona Empresa:</label>
-            <select name="companyId" id="company">
-                <% companies.forEach(company => { %>
-                    <option value="<%= company._id %>"><%= company.name %></option>
-                <% }); %>
-            </select>
-
-            <label for="students">Selecciona Alumnos:</label>
-            <select name="studentIds" id="students" multiple>
-                <% students.forEach(student => { %>
-                    <option 
-                        value="<%= student._id %>" 
-                        data-username="<%= student.username %>" 
-                        data-firstname="<%= student.firstName %>"
-                        data-email="<%= student.email %>"
-                    ><%= student.username %></option>
-                <% }); %>
-            </select>
-
-            <button type="submit">Vincular Alumnos</button>
-        </form>
+    <main>
+        <h1>Política de Cookies</h1>
+        <p>En nuestro sitio web utilizamos cookies para mejorar la experiencia del usuario. A continuación, explicamos qué son las cookies, cómo las utilizamos y cómo puede gestionarlas.</p>
+        <h2>¿Qué son las Cookies?</h2>
+        <p>Las cookies son pequeños archivos de texto que se almacenan en su dispositivo cuando visita un sitio web. Se utilizan para recordar sus preferencias y mejorar su experiencia de navegación.</p>
+        <h2>Tipos de Cookies que Utilizamos</h2>
+        <p>Utilizamos cookies propias y de terceros para diversos propósitos, como análisis de tráfico, personalización de contenido y publicidad.</p>
+        <h2>Gestión de Cookies</h2>
+        <p>Puede gestionar y controlar el uso de cookies a través de la configuración de su navegador. Tenga en cuenta que la desactivación de ciertas cookies puede afectar la funcionalidad del sitio web.</p>
+        <h2>Consentimiento</h2>
+        <p>Al continuar navegando en nuestro sitio web, usted acepta el uso de cookies conforme a esta política. Puede retirar su consentimiento en cualquier momento cambiando la configuración de cookies en su navegador.</p>
     </main>
 
-    <!-- Pie de página -->
     <footer>
         <div class="footer-column">
             <ul>
@@ -87,18 +68,5 @@
             </ul>
         </div>
     </footer>
-    <script>
-        // Ordenar las opciones del select alfabéticamente
-        document.addEventListener('DOMContentLoaded', function() {
-            const selectElement = document.getElementById('students');
-            const options = Array.from(selectElement.options);
-
-            options.sort((a, b) => a.text.localeCompare(b.text));
-            selectElement.innerHTML = '';
-            options.forEach(option => selectElement.add(option));
-        });
-    </script>
-    <script src="/js/getPhoto.js"></script>
-    <script src="/js/getRole.js"></script>
 </body>
 </html>
