@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.buscar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+#inputBuscarNombre {
+    padding: 8px 10px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #dfe1e5;
+    font-size: 16px;
+}
+
+#formBuscar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#formBuscar label {
+    margin-right: 10px;
+}
+
+#formBuscar select {
+    border-radius: 20px;
+    padding: 8px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#formBuscar button {
+    border-radius: 5px;
+    padding: 8px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#formBuscar button:hover {
+    background-color: #006444;
+}
+
+#tablaEmpresas {
+    width: 100%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+#tablaEmpresas th,
+#tablaEmpresas td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+#tablaEmpresas th {
+    background-color: #f2f2f2;
+}
+
+#tablaEmpresas tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#tablaEmpresas tbody tr:hover {
+    background-color: #f2f2f2;
+}

@@ -12,7 +12,7 @@
         <img src="/img/logo_IES.png" alt="Logo" class="logo">
         <div class="main">
 		    <div class="signup">
-                <form action="/api/v1/auth/register" method="POST" enctype="multipart/form-data">
+                <form id="registerForm" action="/api/v1/auth/register" method="POST" enctype="multipart/form-data">
                     <label for="chk">REGISTRATE</label>
                     <div class="avatar-container">
                         <label for="avatarInput">
@@ -22,17 +22,13 @@
                         <input type="file" name="picture" id="avatarInput" accept="image/*" style="display: none;"> <!-- Input oculto para seleccionar imagen -->
                     </div>
                     <input type="text" name="firstName" placeholder="Nombre..." required>
-                    <input type="text" name="direccion" placeholder="Dirección..." required >
-                    <input type="email" name="email" placeholder="Correo Electronico..." required >
-                    <input type="text" name="username" placeholder="Nombre de usuario..." required >
-                    <input type="password" name="password" placeholder="Contraseña..." required>
-                    
-                    <select name="roles" id="">
-                        <option value="admin">ADMIN</option>
-                        <option value="profesor">PROFESOR</option>
-                        <option value="alumno" selected>ALUMNO</option>
-                    </select>
-                    <button style="background-color: #007bff;">Registrarse</button> 
+                    <input type="text" name="direccion" placeholder="Dirección..." required>
+                    <input type="email" name="email" placeholder="Correo Electronico..." required>
+                    <input type="text" id="username" name="username" placeholder="Nombre de usuario..." required>
+                    <div id="usernameError" class="error-message">El nombre de usuario debe contener al menos una letra mayúscula, un número y un carácter especial.</div>
+                    <input type="password" id="password" name="password" placeholder="Contraseña..." required>
+                    <div id="passwordError" class="error-message">La contraseña debe tener al menos 8 caracteres y no puede ser igual que el nombre de usuario.</div>
+                    <button type="submit" style="background-color: #007bff;">Registrarse</button> 
                     <label>
                         <a href="/api/v1/auth/login" class="login">Ya tengo cuenta</a>
                     </label>
@@ -50,6 +46,37 @@
                     document.getElementById('avatarImage').src = e.target.result;
                 }
                 reader.readAsDataURL(file);
+            }
+        });
+
+
+        // Validación de formulario
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const usernameRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{1,}$/;
+            const usernameError = document.getElementById('usernameError');
+            const passwordError = document.getElementById('passwordError');
+
+            let valid = true;
+
+            if (!usernameRegex.test(username)) {
+                usernameError.style.display = 'block';
+                valid = false;
+            } else {
+                usernameError.style.display = 'none';
+            }
+
+            if (password.length < 8 || username === password) {
+                passwordError.style.display = 'block';
+                valid = false;
+            } else {
+                passwordError.style.display = 'none';
+            }
+
+            if (!valid) {
+                event.preventDefault();
             }
         });
     </script>

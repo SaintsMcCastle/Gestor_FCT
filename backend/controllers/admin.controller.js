@@ -1,4 +1,5 @@
 const UserModel = require("../models/user");
+const EmpresaModel = require("../models/empresa")
 const RoleModel = require('../models/role');
 const version ="v1"
 const logger = require('../logger');
@@ -29,13 +30,33 @@ exports.findAll = wrapAsync(async function (req, res) {
     }
 });
 
+exports.findAllEmpresas = wrapAsync(async function (req, res) {
+    try {
+        const empresas = await EmpresaModel.find();
+        res.render('companiesList.ejs', { empresas });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error al buscar empresas');
+    }
+});
+
 // Mostrar formulario para crear nuevo usuario
 exports.showCreate = (req, res) => {
     res.render('newUser.ejs');
 };
 
+// Mostrar formulario para crear nuevo usuario
+exports.showCreateEmpresa = (req, res) => {
+    res.render('newCompany.ejs');
+};
 
-// res.redirect(`/api/${version}/admin/users/${newUser._id}`);
+// Mostrar formulario para añadir un alumno a la empresa
+exports.showAddStudent = (req, res) => {
+    res.render('addStudent.ejs');
+};
+
+
+
 
 // Crear un nuevo usuario
 exports.create = wrapAsync(async function (req, res) {
@@ -74,14 +95,32 @@ exports.create = wrapAsync(async function (req, res) {
         // Guardar el usuario en la base de datos
         const savedUser = await newUser.save();
         console.log(savedUser);
-        res.status(200).json({ message: "Usuario creado correctamente", user: savedUser });
-
+        res.status(200).redirect(`/api/v1/users/${newUser._id}/view`); // Redirige a donde quieras después de editar
 
     } catch (error) {
         console.error('Error al crear el usuario:', error);
         res.status(500).json({ error: error.message });
     }
 });
+
+
+// Crear una nueva empresa
+exports.createEmpresa = wrapAsync(async function (req, res) {
+    try {
+        // Crear una nueva empresa con los datos del formulario
+        const newEmpresa = new EmpresaModel(req.body);
+
+        // Guardar la empresa en la base de datos
+        const savedEmpresa = await newEmpresa.save();
+        console.log(savedEmpresa);
+        res.status(200).redirect(`/api/v1/empresas/${newEmpresa._id}/view`); // Redirige a donde quieras después de crear
+
+    } catch (error) {
+        console.error('Error al crear la empresa:', error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
 
 // Mostrar detalles de un usuario por su ID
 exports.findbyId = wrapAsync(async function (req, res) {
@@ -117,6 +156,29 @@ exports.deleteById = wrapAsync(async function (req, res) {
         return res.status(500).json({ error: 'Error interno del servidor' });
     }
 
+});
+
+
+
+exports.deleteByIdEmpresas = wrapAsync(async function (req, res) {
+    const { id } = req.params;
+
+    try {
+        // Buscar y eliminar la empresa por su ID
+        const deletedCompany = await EmpresaModel.findByIdAndDelete(id);
+
+        if (!deletedCompany) {
+            logger.error.fatal("Error al borrar empresa: Empresa no encontrada");
+            return res.status(404).json({ error: 'Empresa no encontrada' });
+        }
+
+        logger.access.debug("Acceso a controller 'deleteById' ,esquema 'empresas'");
+        return res.redirect(`/api/${version}/empresas/admin/companylist`);
+    } catch (error) {
+        console.error('Error al borrar empresa:', error);
+        logger.error.fatal("Error acceso a controller 'deleteById' ,esquema 'empresas'");
+        return res.status(500).json({ error: 'Error interno del servidor' });
+    }
 });
 
 // // Mostrar formulario para editar un usuario

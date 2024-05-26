@@ -95,6 +95,13 @@ body {
     margin-top: 10px; /* Espacio adicional encima del input de imagen */
 }
 
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: none;
+}
+
 /* Reglas para hacer la página responsive */
 @media screen and (max-width: 600px) {
     .main {

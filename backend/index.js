@@ -89,7 +89,7 @@ app.use(`/api/${version}/empresas`,empresasRoutes)
 
 /* CONTROLADORES - RUTAS DE USERS */
 app.get("/",(req,res)=>{
-    res.redirect(`/api/${version}/auth/register`,)
+    res.redirect(`/api/${version}/auth/login`,)
 })
 
 
@@ -100,6 +100,12 @@ app.use(anyadirMorgan,(req, res) => {
     res.status(404).sendFile(path.join(__dirname, '..','frontend','public','pag404','dist','index.html'))
     logger.error.error("Se ha accedido a una ruta que no existe en el servidor");
     new AppError("Ruta no existente", 404);
+});
+
+app.use(anyadirMorgan,(req, res) => {
+    res.status(403).sendFile(path.join(__dirname, '..','frontend','public','pag403','dist','index.html'))
+    logger.error.error("Se ha intentado acceder a una ruta que no esta permitida para el usuario solicitante");
+    new AppError("Ruta no permitida", 403);
 });
 
 

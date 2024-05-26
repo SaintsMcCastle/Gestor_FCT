@@ -56,8 +56,25 @@ exports.isAdmin= wrapAsync(async function (req,res,next) {
             return
         }
     }
-    return res.status(403).sendFile(path.join(__dirname, '../public','./pag403','./dist','index.html'))
+    res.status(403).sendFile(path.join(__dirname, '..','..','frontend','public','pag403','dist','index.html'))
 })
+
+exports.isAdminOrProfesor= wrapAsync(async function (req,res,next) {
+    const user = await UserModel.findById(req.userId)
+    const roles = await RoleModel.find({_id: {$in: user.roles}})
+
+    console.log(roles)
+
+    for (let i = 0; i < roles.length; i++) {
+        if (roles[i].name ==="admin" || roles[i].name ==="profesor" ){
+            next()
+            return
+        }
+    }
+    res.status(403).sendFile(path.join(__dirname, '..','..','frontend','public','pag403','dist','index.html'))
+})
+
+
 
 exports.isUser= wrapAsync(async function (req,res,next) {
     const user = await UserModel.findById(req.userId)

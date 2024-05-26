@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const formBuscar = document.getElementById('formBuscar');
     const tablaEmpresas = document.getElementById('tablaEmpresas');
     const inputBuscarNombre = document.getElementById('inputBuscarNombre');
+    const mensajeNoResultados = document.getElementById('mensajeNoResultados');
 
     // Función para cargar opciones desde el servidor y llenar los select
     function cargarOpciones(url, select) {
@@ -63,6 +64,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     `;
                     tablaEmpresas.querySelector('tbody').appendChild(filaEmpresa);
                 });
+
+                // Mostrar mensaje si no hay empresas
+                if (empresas.length === 0) {
+                    mensajeNoResultados.style.display = 'block';
+                } else {
+                    mensajeNoResultados.style.display = 'none';
+                }
             })
             .catch(error => console.error('Error al cargar empresas:', error));
     }
@@ -100,18 +108,24 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Limpiar la tabla antes de agregar las nuevas empresas
                 tablaEmpresas.querySelector('tbody').innerHTML = '';
 
-                empresas.forEach(empresa => {
-                    // Crear una fila de la tabla para cada empresa
-                    const fila = document.createElement('tr');
-                    fila.innerHTML = `
-                        <td>${empresa.CIF}</td>
-                        <td>${empresa.name}</td>
-                        <td>${empresa.city}</td>
-                        <td>${empresa.personInCharge}</td>
-                        <td>${empresa.area}</td>
-                    `;
-                    tablaEmpresas.querySelector('tbody').appendChild(fila);
-                });
+                if (empresas.length === 0) {
+                    mensajeNoResultados.style.display = 'block';
+                } else {
+                    mensajeNoResultados.style.display = 'none';
+
+                    empresas.forEach(empresa => {
+                        // Crear una fila de la tabla para cada empresa
+                        const fila = document.createElement('tr');
+                        fila.innerHTML = `
+                            <td>${empresa.CIF}</td>
+                            <td>${empresa.name}</td>
+                            <td>${empresa.city}</td>
+                            <td>${empresa.personInCharge}</td>
+                            <td>${empresa.area}</td>
+                        `;
+                        tablaEmpresas.querySelector('tbody').appendChild(fila);
+                    });
+                }
             })
             .catch(error => console.error('Error al buscar empresas:', error));
     });
@@ -121,13 +135,23 @@ document.addEventListener("DOMContentLoaded", function() {
         const searchTerm = inputBuscarNombre.value.trim().toLowerCase();
         const empresas = tablaEmpresas.querySelectorAll('tbody tr');
 
+        let resultadosEncontrados = false;
+
         empresas.forEach(empresa => {
             const nombreEmpresa = empresa.querySelector('td:nth-child(2)').textContent.toLowerCase();
             if (nombreEmpresa.includes(searchTerm)) {
                 empresa.style.display = '';
+                resultadosEncontrados = true;
             } else {
                 empresa.style.display = 'none';
             }
         });
+
+        // Mostrar u ocultar el mensaje de "No hay resultados"
+        if (resultadosEncontrados) {
+            mensajeNoResultados.style.display = 'none';
+        } else {
+            mensajeNoResultados.style.display = 'block';
+        }
     });
 });

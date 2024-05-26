@@ -32,9 +32,15 @@ const userSchema = new mongoose.Schema({
         {
             ref: "Role",
             type: mongoose.Schema.Types.ObjectId
-        },
+        }
     ],
+    empresa: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Empresa',
+        default: null
+    }
 },
+
 {
     timestamps: true, //Esto sirve para que automaticamente mongoose añada cretedAt y updatedAt
     versionKey: false,

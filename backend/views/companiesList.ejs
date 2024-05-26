@@ -4,15 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Usuarios</title>
+    <title>Lista de Empresas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/listUsers.css">
-
-    <style>
-        
-    </style>
 </head>
 <body>
     <!-- Cabecera -->
@@ -41,48 +37,57 @@
             </ul>
         </div>
     </header>
-
-    <!-- Contenido principal -->
+     <!-- Contenido principal -->
     <main>
-        <h1>Lista de Usuarios</h1>
-        <button class="create-icon"><a href="/api/v1/users/admin/users/new"><i class="fa-solid fa-plus"></i></a></button>
+        <h1>Lista de Empresas</h1>
+        <button class="create-icon"><a href="/api/v1/empresas/admin/empresas/new"><i class="fa-solid fa-plus"></i></a></button>
 
         <table id="dataTable0" class="visible">
             <thead>
                 <tr>
                     <th onclick="sortTable(0)" class="sorted-asc">Fecha de Creación <i class="fa-solid fa-sort fa-xs"></i></th>
                     <th>Nombre</th>
-                    <th>Usuario</th>
+                    <th>Ciudad</th>
+                    <th>Persona a Cargo</th>
+                    <th>CIF</th>
                     <th>Correo Electrónico</th>
                     <th>Editar</th>
                     <th>Borrar</th>
                     <th>Ver</th>
+                    <th>Añadir Alumnos</th>
                 </tr>
             </thead>
             <tbody>
-                <% usuarios.slice(0, 10).forEach((usuario, index) => { %>
+                <% empresas.slice(0, 10).forEach((empresa, index) => { %>
                     <tr>
-                        <td><%= usuario.createdAt %></td>
-                        <td><%= usuario.firstName %></td>
-                        <td><%= usuario.username %></td>
-                        <td><%= usuario.email %></td>
-                        <td><a href="/api/v1/users/<%= usuario._id %>/edit"><i class="fa-solid fa-edit"></i></a></td>
+                        <td><%= empresa.createdAt %></td>
+                        <td><%= empresa.name %></td>
+                        <td><%= empresa.city %></td>
+                        <td><%= empresa.personInCharge %></td>
+                        <td><%= empresa.CIF %></td>
+                        <td><%= empresa.email %></td>
+                        <td><a href="/api/v1/empresas/<%= empresa._id %>/edit"><i class="fa-solid fa-edit"></i></a></td>
                         <td>
-                            <button style="background: none; border: none; cursor: pointer;" onclick="openPopup('<%= usuario._id %>')"><i class="fa-solid fa-trash"></i></button>
+                            <button style="background: none; border: none; cursor: pointer;" onclick="openPopup('<%= empresa._id %>')"><i class="fa-solid fa-trash"></i></button>
                         </td>
-                        <td><a href="/api/v1/users/<%= usuario._id %>/view"><i class="fa-solid fa-eye"></i></a></td>
+                        <td><a href="/api/v1/empresas/<%= empresa._id %>/view"><i class="fa-solid fa-eye"></i></a></td>
+                        <td>
+                            <a href="/api/v1/empresas/admin/<%= empresa._id %>/addStudents">Añadir</a>
+                        </td>
                     </tr>
                 <% }); %>
             </tbody>
         </table>
-        <% const totalPages = Math.ceil(usuarios.length / 10); %>
+        <% const totalPages = Math.ceil(empresas.length / 10); %>
         <% for (let i = 1; i < totalPages; i++) { %>
             <table id="dataTable<%= i %>" class="hidden">
                 <thead>
                     <tr>
                         <th onclick="sortTable(<%= i %>)">Fecha de Creación <i class="fa-solid fa-sort fa-xs"></i></th>
                         <th>Nombre</th>
-                        <th>Usuario</th>
+                        <th>Ciudad</th>
+                        <th>Persona a Cargo</th>
+                        <th>CIF</th>
                         <th>Correo Electrónico</th>
                         <th>Editar</th>
                         <th>Borrar</th>
@@ -90,34 +95,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% usuarios.slice(i * 10, (i + 1) * 10).forEach(usuario => { %>
+                    <% empresas.slice(i * 10, (i + 1) * 10).forEach(empresa => { %>
                         <tr>
-                            <td><%= usuario.createdAt %></td>
-                            <td><%= usuario.firstName %></td>
-                            <td><%= usuario.username %></td>
-                            <td><%= usuario.email %></td>
-                            <td><a href="/api/v1/users/<%= usuario._id %>/edit"><i class="fa-solid fa-edit"></i></a></td>
+                            <td><%= empresa.createdAt %></td>
+                            <td><%= empresa.name %></td>
+                            <td><%= empresa.city %></td>
+                            <td><%= empresa.personInCharge %></td>
+                            <td><%= empresa.CIF %></td>
+                            <td><%= empresa.email %></td>
+                            <td><a href="/api/v1/empresas/<%= empresa._id %>/edit"><i class="fa-solid fa-edit"></i></a></td>
                             <td>
-                                <button style="background: none; border: none; cursor: pointer;" onclick="openPopup('<%= usuario._id %>')"><i class="fa-solid fa-trash"></i></button>
+                                <button style="background: none; border: none; cursor: pointer;" onclick="openPopup('<%= empresa._id %>')"><i class="fa-solid fa-trash"></i></button>
                             </td>
-                            <td><a href="/api/v1/users/<%= usuario._id %>/view"><i class="fa-solid fa-eye"></i></a></td>
+                            <td><a href="/api/v1/empresas/<%= empresa._id %>/view"><i class="fa-solid fa-eye"></i></a></td>
                         </tr>
                     <% }); %>
                 </tbody>
             </table>
         <% } %>
         <div class="pagination">
-            
             <% for (let i = 0; i < totalPages; i++) { %>
                 <a href="#" class="page-link" onclick="changeTable(<%= i %>)"><%= i + 1 %></a>
             <% } %>
         </div>
     </main>
 
-     <!-- Pop-up para confirmar el borrado,estara oculto hasta que se haga click en el icono de borrado-->
-     <div id="popup" class="popup-container">
+    <!-- Pop-up para confirmar el borrado,estara oculto hasta que se haga click en el icono de borrado-->
+    <div id="popup" class="popup-container">
         <div class="popup-content">
-            <h2>¿Estás seguro de que quieres borrar este usuario?</h2>
+            <h2>¿Estás seguro de que quieres borrar esta empresa?</h2>
             <div class="popup-buttons">
                 <button class="primary" onclick="confirmDelete()">Sí</button>
                 <button class="secondary" onclick="closePopup()">No</button>
@@ -125,8 +131,8 @@
         </div>
     </div>
 
-    <!-- Pie de página -->
-    <footer>
+     <!-- Pie de página -->
+     <footer>
         <div class="footer-column">
             <ul>
                 <li><a href="#">Legal Warning</a></li>
@@ -148,7 +154,7 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+
     <script>
         let currentPage = 0; // Variable para almacenar la página actual
     
@@ -194,41 +200,43 @@
 
     </script>
 
-<script>
-    function openPopup(userId) {
-        // Abre el pop-up
-        document.getElementById('popup').style.display = 'block';
-        // Guarda el ID del usuario en un atributo data
-        document.getElementById('popup').setAttribute('data-user-id', userId);
-    }
 
-    function closePopup() {
-        // Cierra el pop-up
-        document.getElementById('popup').style.display = 'none';
-    }
+    <!-- Scripts -->
+    <script>
+        function openPopup(companyId) {
+            // Abre el pop-up
+            document.getElementById('popup').style.display = 'block';
+            // Guarda el ID de la empresa en un atributo data
+            document.getElementById('popup').setAttribute('data-company-id', companyId);
+        }
 
-    function confirmDelete() {
-        // Obtiene el ID del usuario desde el atributo data
-        const userId = document.getElementById('popup').getAttribute('data-user-id');
-        // Realiza la petición de borrado
-        fetch(`/api/v1/users/admin/users/${userId}?_method=DELETE`, {
-            method: 'POST'
-        })
-        .then(response => {
-            if (response.ok) {
-                // Si la respuesta es exitosa, recarga la página
-                location.reload();
-            } else {
-                // Si hay algún error, muestra un mensaje de error
-                console.error('Error al borrar el usuario');
-            }
-        })
-        .catch(error => {
-            console.error('Error al borrar el usuario:', error);
-        });
-        // Cierra el pop-up
-        closePopup();
-    }
-</script>
+        function closePopup() {
+            // Cierra el pop-up
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        function confirmDelete() {
+            // Obtiene el ID de la empresa desde el atributo data
+            const companyId = document.getElementById('popup').getAttribute('data-company-id');
+            // Realiza la petición de borrado
+            fetch(`/api/v1/empresas/admin/empresas/${companyId}?_method=DELETE`, {
+                method: 'POST'
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Si la respuesta es exitosa, recarga la página
+                    location.reload();
+                } else {
+                    // Si hay algún error, muestra un mensaje de error
+                    console.error('Error al borrar la empresa');
+                }
+            })
+            .catch(error => {
+                console.error('Error al borrar la empresa:', error);
+            });
+            // Cierra el pop-up
+            closePopup();
+        }
+    </script>
 </body>
 </html>

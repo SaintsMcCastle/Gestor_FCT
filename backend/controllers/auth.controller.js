@@ -52,20 +52,20 @@ exports.register = wrapAsync(async function(req, res) {
             newUser.picture = base64Image;
             // Eliminar el archivo temporal de la imagen cargada
             await fs.unlink(req.file.path); // Usar await para esperar a que fs.unlink se complete
-        }else{
+        }
+        else{
             console.log("no hay foto")
+            const defaultImagePath = path.join(__dirname, "../../frontend/public/img/edit.png");
+            const defaultImageData = await fs.readFile(defaultImagePath);
+            const base64DefaultImage = defaultImageData.toString('base64');
+            newUser.picture = base64DefaultImage;
+            console.log("No se proporcionó una imagen, usando la imagen predeterminada");
         }
 
-        // Buscar y asignar roles si se proporcionan
-        const {roles} = req.body
+        // Asignar el rol de "alumno" de forma predeterminada
+        const role = await RoleModel.findOne({ name: "alumno" });
+        newUser.roles = [role._id]; // Asignar el rol de "alumno"
 
-        if (roles) { // Si el usuario elige un rol, buscarlo en el modelo de roles
-            const foundRoles = await RoleModel.find({ name: {$in: roles}});
-            newUser.roles = foundRoles.map(role => role._id);
-        } else { // Si el usuario no elige ningún rol, asignar el rol de invitado de forma predeterminada
-            const role = await RoleModel.findOne({ name: "alumno" });
-            newUser.roles = [role._id];
-        }         
 
         // Guardar el usuario en la base de datos
         const savedUser = await newUser.save();
@@ -77,37 +77,77 @@ exports.register = wrapAsync(async function(req, res) {
     }
 });
 
-exports.login=wrapAsync(async function(req,res){
-    const { username, password } = req.body   
-    const pwd_textoPlano = password                            // El pwd_texto plano es la contraseña que introducimos en el formulario tal cual
-    let userFoundData = null
 
-    await UserModel.findByUsername(username,function(userFound,err){
-        if(err){
-            res.status(500).json(err)
-        }else{
-            userFoundData = userFound
-            console.log(userFoundData)
-        }
-    })
+
+
+// exports.login=wrapAsync(async function(req,res){
+//     const { username, password } = req.body   
+//     const pwd_textoPlano = password                            // El pwd_texto plano es la contraseña que introducimos en el formulario tal cual
+//     let userFoundData = null
+
+//     await UserModel.findByUsername(username,function(userFound,err){
+//         if(err){
+//             res.status(500).json(err)
+//         }else{
+//             userFoundData = userFound
+//             console.log(userFoundData)
+//         }
+//     })
     
-    if(userFoundData){
-        const validado = await bcrypt.compare(pwd_textoPlano,userFoundData.password) //Si el usuario existe se compara la contraseña de texto plano con la contraseña encriptada de la base de datos
-        if(validado){
-            const token = jwt.sign({ id: userFoundData._id},claveJWT,{
-                expiresIn: 86400 //24h
-            })
-            // req.session.user=userFoundData
-            req.session.token = token
+//     if(userFoundData){
+//         const validado = await bcrypt.compare(pwd_textoPlano,userFoundData.password) //Si el usuario existe se compara la contraseña de texto plano con la contraseña encriptada de la base de datos
+//         if(validado){
+//             const token = jwt.sign({ id: userFoundData._id},claveJWT,{
+//                 expiresIn: 86400 //24h
+//             })
 
-            console.log(token)
-            res.status(200).set('x-auth-token', token).redirect(`/api/${version}/home/main?userId=${userFoundData._id}`);
-        }else{
-            res.status(401).json({"err":"Usuario y/o contraseña no correctos"})
+//             // Crear una cookie con el ID del usuario
+//             res.cookie('userId', userFoundData._id, { maxAge: 86400 * 1000, httpOnly: true });
+
+//             req.session.user=userFoundData
+//             req.session.token = token
+
+//             console.log(token)
+//             res.status(200).set('x-auth-token', token).redirect(`/api/${version}/home/main?userId=${userFoundData._id}`);
+//         }else{
+//             res.status(401).json({"err":"Usuario y/o contraseña no correctos"})
+//         }
+//     }
+// })
+
+
+exports.login = wrapAsync(async function(req, res) {
+    const { username, password } = req.body;   
+    const pwd_textoPlano = password;
+    let userFoundData = null;
+
+    await UserModel.findByUsername(username, function(userFound, err) {
+        if (err) {
+            res.status(500).json(err);
+        } else {
+            userFoundData = userFound;
+            console.log(userFoundData);
+        }
+    });
+
+    if (userFoundData) {
+        const validado = await bcrypt.compare(pwd_textoPlano, userFoundData.password);
+        if (validado) {
+            const token = jwt.sign({ id: userFoundData._id }, claveJWT, {
+                expiresIn: 86400 // 24h
+            });
+            req.session.user = userFoundData;
+            req.session.token = token;
+
+            console.log(token);
+            res.cookie('userId', userFoundData._id.toString(), { httpOnly: false });
+            res.status(200).set('x-auth-token', token).redirect(`/api/${version}/home/main`);
+        } else {
+            res.status(401).json({"err":"Usuario y/o contraseña no correctos"});
         }
     }
-})
-
+});
+    
 exports.logout=(req,res)=>{
     console.log("Estoy dentro")
     const token = extractToken(req)

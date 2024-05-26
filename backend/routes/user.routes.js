@@ -13,6 +13,8 @@ const adminCtrl = require("../controllers/admin.controller")
 
 //Obtener Imagen
 router.get('/user/:userId/picture',[authJwt.verifyToken],userCtrl.getUserPicture);
+router.get('/user/:userId/role',[authJwt.verifyToken],userCtrl.getUserRole);
+
 
 // Listar todos los usuarios (solo para admin)
 router.get("/admin/userList", [authJwt.verifyToken, authJwt.isAdmin], adminCtrl.findAll);
@@ -23,17 +25,17 @@ router.get("/admin/users/new", [authJwt.verifyToken, authJwt.isAdmin], adminCtrl
 // Crear un nuevo usuario (solo para admin)
 router.post("/admin/users", [authJwt.verifyToken, authJwt.isAdmin,upload.single('picture'),checkDuplicateUser.checkUserEmail], adminCtrl.create);
 
-// Mostrar detalles de un usuario (solo para el usuario actual, admin o profesor)
-// router.get("/users/:id", authJwt.verifyToken, userCtrl.findById);
+// Mostrar detalles de usuario (solo para el usuario actual, admin o profesor)
+router.get("/:id/view", authJwt.verifyToken, userCtrl.loadView);
 
 // Borrar un usuario (solo para admin)
 router.delete("/admin/users/:id", [authJwt.verifyToken, authJwt.isAdmin], adminCtrl.deleteById);
 
 // Mostrar formulario de edición de usuario (solo para el usuario actual, admin o profesor)
-// router.get("/:id/edit", authJwt.verifyToken, userCtrl.loadEdit);
+router.get("/:id/edit", authJwt.verifyToken, userCtrl.loadEdit);
 
-// // Editar un usuario (solo para el usuario actual, admin o profesor)
-// router.patch("/:id", authJwt.verifyToken, userCtrl.edit);
+// Editar un usuario (solo para el usuario actual, admin o profesor)
+router.patch("/:id", [authJwt.verifyToken, upload.single('picture')], userCtrl.edit);
 
 
 module.exports = router

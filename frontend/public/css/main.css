@@ -1,8 +1,10 @@
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
 }
-
 
 /* Estilos para el contenido principal */
 main {
@@ -10,77 +12,147 @@ main {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 20px;
 }
 
+/* Estilo para el contenedor de búsqueda */
 .buscar-container {
-    display: grid;
-    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin: 20px;
+    margin: 20px 0;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px;
 }
 
-
+/* Estilo para el campo de entrada de búsqueda */
 #inputBuscarNombre {
-    padding: 8px 10px;
-    border-radius: 20px;
-    margin-bottom: 30px; 
-    border: 1px solid #dfe1e5; /* Añade un borde */
-    font-size: 16px; /* Ajusta el tamaño de la fuente */
+    padding: 10px 15px;
+    border-radius: 25px;
+    margin-bottom: 20px;
+    border: 1px solid #dfe1e5;
+    font-size: 16px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos para el formulario de búsqueda */
 #formBuscar {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Estilos para las etiquetas y los select del formulario */
+#formBuscar label {
+    display: flex;
     align-items: center;
+    font-size: 16px;
+    margin-right: 10px;
 }
 
-/* Estilos para los select del formulario */
 #formBuscar select {
-    border-radius: 20px;
-    padding: 8px; /* Espacio interno */
-    margin-right: 20px; 
-    margin-left: 10px; 
-
+    border-radius: 25px;
+    padding: 10px;
+    border: 1px solid #dfe1e5;
+    font-size: 16px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 
 /* Estilo para el botón de buscar */
 #formBuscar button {
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 8px 20px; /* Espacio interno */
-    background-color: #333; /* Color de fondo */
-    color: #fff; /* Color del texto */
-    border: none; /* Quita los bordes */
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    border-radius: 25px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilo para el botón de buscar al pasar el ratón */
 #formBuscar button:hover {
-    background-color: #006444; /* Cambia el color de fondo al pasar el ratón */
+    background-color: #006444;
 }
 
 /* Estilos para la tabla de empresas */
 #tablaEmpresas {
-    width: calc(100% - 40px); /* Resta 40px al 100% del ancho para dejar espacio en los lados */
-    margin: 0 auto 20px; /* Centra la tabla horizontalmente y agrega espacio abajo */
-    position: relative; /* Agrega posición relativa */
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px 0;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #tablaEmpresas th,
 #tablaEmpresas td {
-    padding: 10px; /* Espacio interno de las celdas */
-    text-align: center; /* Centra el texto dentro de las celdas */
-    border: 1px solid #ddd; /* Borde de las celdas */
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
 }
 
 #tablaEmpresas th {
-    background-color: #f2f2f2; /* Color de fondo del encabezado */
+    background-color: #f2f2f2;
+    font-weight: bold;
 }
 
 #tablaEmpresas tbody tr:nth-child(even) {
-    background-color: #f9f9f9; /* Color de fondo de las filas pares */
+    background-color: #f9f9f9;
 }
 
 #tablaEmpresas tbody tr:hover {
-    background-color: #f2f2f2; /* Cambia el color de fondo al pasar el ratón */
+    background-color: #f2f2f2;
+}
+
+/* Estilo para el mensaje de no resultados */
+#mensajeNoResultados {
+    display: none;
+    color: #ff0000;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* Media queries para hacer la página responsive */
+@media (max-width: 768px) {
+    main {
+        padding: 10px;
+    }
+
+    .buscar-container {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    #formBuscar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #formBuscar label {
+        margin-bottom: 5px;
+    }
+
+    #formBuscar select,
+    #formBuscar button,
+    #inputBuscarNombre {
+        width: 100%;
+        max-width: none;
+        margin-bottom: 10px;
+    }
+
+    #tablaEmpresas th,
+    #tablaEmpresas td {
+        padding: 8px 10px;
+    }
 }

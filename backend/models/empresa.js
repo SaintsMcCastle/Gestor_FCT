@@ -50,7 +50,11 @@ const empresaSchema = new mongoose.Schema({
         type:String,
         required: true,
         unique:true
-    }
+    },
+    students: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 },
 {
     timestamps: true, //Esto sirve para que automaticamente mongoose añada cretedAt y updatedAt

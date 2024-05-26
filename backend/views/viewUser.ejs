@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Usuarios</title>
+    <title>Editar Usuario</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/newUser.css">
+    <link rel="stylesheet" href="/css/view.css">
     <link rel="stylesheet" href="/css/footer.css">
-    
 </head>
 <body>
-    <!-- Cabecera -->
     <header>
         <div class="logo">
             <img src="/img/logo_Color_IES.png" alt="Logo">
@@ -39,41 +38,42 @@
     </header>
 
     <!-- Contenido principal -->
-    <main class="main">
-        <form action="/api/v1/users/admin/users" method="post" enctype="multipart/form-data"> <!-- Añadir enctype para manejar archivos -->
-            <label for="username">Nombre de Usuario:</label>
-            <input type="text" id="username" name="username" placeholder="Nombre de usuario..." required>
-
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" placeholder="Contraseña..." required>
-
-            <label for="firstName">Nombre:</label>
-            <input type="text" id="firstName" name="firstName" placeholder="Nombre..." required>
-
-            <label for="direccion">Dirección:</label>
-            <input type="text" id="direccion" name="direccion"placeholder="Ciudad,Calle,Puerta." required>
-
-            <label for="email">Correo Electrónico:</label>
-            <input type="email" id="email" name="email"placeholder="Correo Electrónico..." required>
-
-            <div class="avatar-container">
-                <label for="avatarInput">
-                    <img src="/img/avatar-default-symbolic.svg" alt="Avatar predeterminado" id="avatarImage">
-                </label>
-                <h3>(Imagen opcional)</h3>  
-                <input type="file" name="picture" id="avatarInput" accept="image/*" style="display: none;"> <!-- Input oculto para seleccionar imagen -->
+    <main>
+        <div class="container">
+            <h1>Ver Usuario</h1>
+            <div class="user-details">
+                <div class="form-group">
+                    <label>Nombre de Usuario:</label>
+                    <input type="text" value="<%= usuario.username %>" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Nombre:</label>
+                    <input type="text" value="<%= usuario.firstName %> <%= usuario.lastName %>" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Dirección:</label>
+                    <input type="text" value="<%= usuario.address %>" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Correo Electrónico:</label>
+                    <input type="text" value="<%= usuario.email %>" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="picture">Imagen de Perfil (Opcional):</label>
+                    <div class="avatar-container">
+                        <% if (usuario.picture) { %>
+                            <img src="data:image/png;base64,<%= usuario.picture %>" alt="Imagen actual" id="avatarImage">
+                        <% } else { %>
+                            <img src="/img/avatar-default-symbolic.svg" alt="Avatar predeterminado" id="avatarImage">
+                        <% } %>
+                        <input type="file" name="picture" id="avatarInput" accept="image/*" style="display: none;">
+                    </div>
+                </div>
             </div>
-
-            <label for="roles">Roles:</label>
-            <select name="roles" id="">
-                <option value="admin">ADMIN</option>
-                <option value="profesor">PROFESOR</option>
-                <option value="alumno" selected>ALUMNO</option>
-            </select>
-
-            <button type="submit">Crear Usuario</button>
-        </form>
+            <a href="/api/v1/users/admin/userlist" class="btn">Volver al Listado de Usuarios</a>
+        </div>
     </main>
+
 
     <!-- Pie de página -->
     <footer>
@@ -98,8 +98,8 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
-        // Script para mostrar la imagen seleccionada
         document.getElementById('avatarInput').addEventListener('change', function(event) {
             const file = event.target.files[0];
             if (file) {
@@ -110,6 +110,10 @@
                 reader.readAsDataURL(file);
             }
         });
+        document.getElementById('avatarImage').addEventListener('click', function() {
+            document.getElementById('avatarInput').click();
+        });
     </script>
+
 </body>
 </html>
