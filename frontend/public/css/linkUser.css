@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+main {
+    padding: 20px; /* Añade un espacio alrededor del contenido */
+    background-color: #f2f2f2; /* Color de fondo */
+    min-height: calc(100vh - 260px); /* Altura mínima para ajustarse al contenido */
+    display: flex; /* Usa flexbox para centrar el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+    text-align: center;
+    flex-direction: column; /* Alinea el contenido en columna */
+}
+main form {
+    max-width: 500px;
+    width: 100%;
+    background-color: #fff;
+    padding: 40px; /* Aumentar el espacio interior del formulario */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Alinear el texto a la izquierda */
+}
+
+main label {
+    font-weight: bold;
+    margin-bottom: 15px; /* Reducir el espacio inferior entre etiquetas */
+    display: block;
+}
+
+main input,
+main select {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    appearance: none; /* Eliminar el estilo predeterminado del sistema */
+    -webkit-appearance: none; /* Para navegadores basados en WebKit */
+    -moz-appearance: none; /* Para navegadores basados en Gecko (Firefox) */
+    background-position: right 15px center; /* Posicionar la flecha a la derecha */
+}
+
+main select option {
+    padding: 10px;
+}
+
+main button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 15px 25px; /* Ajustar el espacio interior del botón */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px; /* Aumentar el tamaño del texto del botón */
+}
+
+main button:hover {
+    background-color: #006444;
+}
+

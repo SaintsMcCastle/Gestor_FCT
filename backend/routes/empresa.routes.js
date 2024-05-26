@@ -18,6 +18,7 @@ router.get("/buscar-empresas",[authJwt.verifyToken],empresaCtrl.findEmpresas)
 
 router.get("/admin/companylist", [authJwt.verifyToken, authJwt.isAdminOrProfesor], adminCtrl.findAllEmpresas);
 
+
 router.get("/:id/view", [authJwt.verifyToken, authJwt.isAdminOrProfesor], empresaCtrl.loadView);
 
 
@@ -38,8 +39,10 @@ router.post("/admin/empresas", [authJwt.verifyToken, authJwt.isAdminOrProfesor],
 router.delete("/admin/empresas/:id", [authJwt.verifyToken, authJwt.isAdminOrProfesor], adminCtrl.deleteByIdEmpresas);
 
 
-// Agregar una nueva ruta para manejar la adición de alumnos a una empresa
-router.get("/admin/:id/addStudents", [authJwt.verifyToken, authJwt.isAdminOrProfesor], adminCtrl.showAddStudent);
+// // Agregar una nueva ruta para manejar la adición de alumnos a una empresa
+
+router.get("/linkStudents", [authJwt.verifyToken, authJwt.isAdminOrProfesor], empresaCtrl.loadLinkStudents);
+router.post("/linkStudents", [authJwt.verifyToken, authJwt.isAdminOrProfesor], empresaCtrl.linkStudents);
 
 
 module.exports = router

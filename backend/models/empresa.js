@@ -52,13 +52,28 @@ const empresaSchema = new mongoose.Schema({
         unique:true
     },
     students: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        _id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        username: String,
+        firstName: String,
+        email: String
     }]
 },
 {
     timestamps: true, //Esto sirve para que automaticamente mongoose añada cretedAt y updatedAt
     versionKey: false,
+});
+
+
+// Hook pre para establecer empresa a null en usuarios
+empresaSchema.pre('remove', async function(next) {
+    await this.model('User').updateMany(
+        { _id: { $in: this.students } },
+        { $set: { empresa: null } }
+    );
+    next();
 });
 
 const Empresa = mongoose.model("Empresa", empresaSchema)
@@ -82,6 +97,7 @@ Empresa.findByName = async function(name_param, result){
         result(null, {"err":"No hay empresas con ese nombre"})
     }
 }
+
 
 
 module.exports = Empresa

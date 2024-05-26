@@ -135,18 +135,65 @@ exports.findbyId = wrapAsync(async function (req, res) {
     }
 });
 
-// Eliminar un usuario por su ID
+// // Eliminar un usuario por su ID
+// exports.deleteById = wrapAsync(async function (req, res) {
+//     const { id } = req.params;
+
+//     try {
+//         // Buscar y eliminar el usuario por su ID
+//         const deletedUser = await UserModel.findByIdAndDelete(id);
+
+//         if (!deletedUser) {
+//             logger.error.fatal("Error al borrar usuario: Usuario no encontrado");
+//             return res.status(404).json({ error: 'Usuario no encontrado' });
+//         }
+
+//         logger.access.debug("Acceso a controller 'deleteById' ,esquema 'usuarios'");
+//         return res.redirect(`/api/${version}/users/admin/userlist`);
+//     } catch (error) {
+//         console.error('Error al borrar usuario:', error);
+//         logger.error.fatal("Error acceso a controller 'deleteById' ,esquema 'usuarios'");
+//         return res.status(500).json({ error: 'Error interno del servidor' });
+//     }
+
+// });
+
+
+
+// exports.deleteByIdEmpresas = wrapAsync(async function (req, res) {
+//     const { id } = req.params;
+
+//     try {
+//         // Buscar y eliminar la empresa por su ID
+//         const deletedCompany = await EmpresaModel.findByIdAndDelete(id);
+
+//         if (!deletedCompany) {
+//             logger.error.fatal("Error al borrar empresa: Empresa no encontrada");
+//             return res.status(404).json({ error: 'Empresa no encontrada' });
+//         }
+
+//         logger.access.debug("Acceso a controller 'deleteById' ,esquema 'empresas'");
+//         return res.redirect(`/api/${version}/empresas/admin/companylist`);
+//     } catch (error) {
+//         console.error('Error al borrar empresa:', error);
+//         logger.error.fatal("Error acceso a controller 'deleteById' ,esquema 'empresas'");
+//         return res.status(500).json({ error: 'Error interno del servidor' });
+//     }
+// });
+
+
 exports.deleteById = wrapAsync(async function (req, res) {
     const { id } = req.params;
 
     try {
-        // Buscar y eliminar el usuario por su ID
-        const deletedUser = await UserModel.findByIdAndDelete(id);
+        const user = await UserModel.findById(id);
 
-        if (!deletedUser) {
+        if (!user) {
             logger.error.fatal("Error al borrar usuario: Usuario no encontrado");
             return res.status(404).json({ error: 'Usuario no encontrado' });
         }
+
+        await user.deleteOne();
 
         logger.access.debug("Acceso a controller 'deleteById' ,esquema 'usuarios'");
         return res.redirect(`/api/${version}/users/admin/userlist`);
@@ -155,42 +202,36 @@ exports.deleteById = wrapAsync(async function (req, res) {
         logger.error.fatal("Error acceso a controller 'deleteById' ,esquema 'usuarios'");
         return res.status(500).json({ error: 'Error interno del servidor' });
     }
-
 });
-
-
 
 exports.deleteByIdEmpresas = wrapAsync(async function (req, res) {
     const { id } = req.params;
 
     try {
-        // Buscar y eliminar la empresa por su ID
-        const deletedCompany = await EmpresaModel.findByIdAndDelete(id);
+        // Buscar la empresa por su ID
+        const company = await EmpresaModel.findById(id);
 
-        if (!deletedCompany) {
+        if (!company) {
             logger.error.fatal("Error al borrar empresa: Empresa no encontrada");
             return res.status(404).json({ error: 'Empresa no encontrada' });
         }
 
-        logger.access.debug("Acceso a controller 'deleteById' ,esquema 'empresas'");
+        // Eliminar las referencias de los usuarios
+        await UserModel.updateMany(
+            { _id: { $in: company.students } },
+            { $set: { empresa: null } }
+        );
+
+        // Eliminar la empresa
+        await company.deleteOne();
+
+        logger.access.debug("Acceso a controller 'deleteByIdEmpresas' ,esquema 'empresas'");
         return res.redirect(`/api/${version}/empresas/admin/companylist`);
+        
     } catch (error) {
         console.error('Error al borrar empresa:', error);
-        logger.error.fatal("Error acceso a controller 'deleteById' ,esquema 'empresas'");
+        logger.error.fatal("Error acceso a controller 'deleteByIdEmpresas' ,esquema 'empresas'");
         return res.status(500).json({ error: 'Error interno del servidor' });
     }
 });
 
-// // Mostrar formulario para editar un usuario
-// exports.loadEdit = wrapAsync(async function (req, res) {
-//     const { id } = req.params;
-//     const user = await UserModel.findById(id);
-//     res.render('editUser.ejs', { usuario: user });
-// });
-
-// // Editar un usuario por su ID
-// exports.edit = wrapAsync(async function (req, res) {
-//     const { id } = req.params;
-//     const uActualizado = await UserModel.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
-//     res.redirect(`/api/${version}/admin/users/${uActualizado._id}`);
-// });

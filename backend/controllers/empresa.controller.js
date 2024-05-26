@@ -1,4 +1,5 @@
 const EmpresaModel = require("../models/empresa");
+const UserModel = require("../models/user");
 const version = "v1";
 const logger = require("../logger");
 const fs = require('fs');
@@ -19,11 +20,22 @@ exports.findAll = wrapAsync(async function (req, res) {
     }
 });
 
+// exports.loadView = wrapAsync(async function (req, res) {
+//     const { id } = req.params;
+//     const company = await EmpresaModel.findById(id);
+//     if (company) {
+//         res.render('viewCompany.ejs', { empresa: company });
+//     } else {
+//         console.log("Empresa no encontrada");
+//     }
+// });
+
 exports.loadView = wrapAsync(async function (req, res) {
     const { id } = req.params;
     const company = await EmpresaModel.findById(id);
     if (company) {
-        res.render('viewCompany.ejs', { empresa: company });
+        const estudiantes = await UserModel.find({ empresa: company._id });
+        res.render('viewCompany.ejs', { empresa: company, estudiantes: estudiantes });
     } else {
         console.log("Empresa no encontrada");
     }
@@ -127,3 +139,108 @@ exports.findEmpresas = wrapAsync(async (req, res, next) => {
         res.status(500).json({ error: 'Error al buscar empresas' });
     }
 }); 
+
+
+
+exports.loadLinkStudents = wrapAsync(async function (req, res) {
+    const companies = await EmpresaModel.find();
+    const students = await UserModel.find();
+    res.render('linkStudents.ejs', { companies, students });
+});
+
+// exports.linkStudents = wrapAsync(async function (req, res) {
+//     const { companyId, studentIds } = req.body;
+
+//     try {
+//         const company = await EmpresaModel.findById(companyId);
+//         if (!company) {
+//             return res.status(404).send({ message: "Company not found" });
+//         }
+
+//         // Asegurarse de que studentIds es un array
+//         const studentIdsArray = Array.isArray(studentIds) ? studentIds : [studentIds];
+
+//         // Verificar si alguno de los estudiantes ya está vinculado a una empresa
+//         const studentsWithCompany = await UserModel.find({
+//             _id: { $in: studentIdsArray },
+//             empresa: { $ne: null }
+//         });
+
+//         if (studentsWithCompany.length > 0) {
+//             return res.status(400).send({
+//                 message: "Algunos estudiantes ya están vinculados a una empresa.",
+//                 students: studentsWithCompany.map(student => student.username)
+//             });
+//         }
+
+//         // Agregar los estudiantes al array de students sin duplicados
+//         await EmpresaModel.findByIdAndUpdate(
+//             companyId,
+//             { $addToSet: { students: { $each: studentIdsArray } } }
+//         );
+
+//         // Actualizar el campo empresa en cada usuario
+//         await UserModel.updateMany(
+//             { _id: { $in: studentIdsArray } },
+//             { empresa: companyId }
+//         );
+
+//         res.redirect(`/api/v1/empresas/${company._id}/view`); // Redirigir después de vincular
+//     } catch (error) {
+//         res.status(500).send({ message: error.message });
+//     }
+// });
+
+exports.linkStudents = wrapAsync(async function (req, res) {
+    const { companyId, studentIds } = req.body;
+
+    try {
+        const company = await EmpresaModel.findById(companyId);
+        if (!company) {
+            return res.status(404).send({ message: "Company not found" });
+        }
+
+        // Asegurarse de que studentIds es un array
+        const studentIdsArray = Array.isArray(studentIds) ? studentIds : [studentIds];
+
+        // Verificar si alguno de los estudiantes ya está vinculado a una empresa
+        const studentsWithCompany = await UserModel.find({
+            _id: { $in: studentIdsArray },
+            empresa: { $ne: null }
+        });
+
+        if (studentsWithCompany.length > 0) {
+            return res.status(400).send({
+                message: "Algunos estudiantes ya están vinculados a una empresa.",
+                students: studentsWithCompany.map(student => student.username)
+            });
+        }
+
+        // Obtener la información completa de los estudiantes seleccionados
+        const studentsInfo = await UserModel.find({ _id: { $in: studentIdsArray } });
+
+        // Mapear la información de los estudiantes para guardarla en el array de estudiantes de la empresa
+        const mappedStudents = studentsInfo.map(student => ({
+            _id: student._id,
+            username: student.username,
+            firstName: student.firstName,
+            email: student.email
+        }));
+
+        // Agregar los estudiantes al array de students sin duplicados
+        await EmpresaModel.findByIdAndUpdate(
+            companyId,
+            { $addToSet: { students: { $each: mappedStudents } } }
+        );
+
+        // Actualizar el campo empresa en cada usuario
+        await UserModel.updateMany(
+            { _id: { $in: studentIdsArray } },
+            { empresa: companyId }
+        );
+
+        res.redirect(`/api/v1/empresas/${company._id}/view`);
+    } catch (error) {
+        res.status(500).send({ message: error.message });
+    }
+});

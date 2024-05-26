@@ -46,6 +46,17 @@ const userSchema = new mongoose.Schema({
     versionKey: false,
 });
 
+// Hook pre para eliminar referencia de usuario en empresa
+userSchema.pre('remove', async function(next) {
+    if (this.empresa) {
+        await this.model('Empresa').updateOne(
+            { _id: this.empresa },
+            { $pull: { students: this._id } }
+        );
+    }
+    next();
+});
+
 const User = mongoose.model("User", userSchema)
 
 //Registrar Usuarios    
@@ -67,6 +78,17 @@ User.findByUsername = async function(username_param, result){
         result(null, {"err":"No hay usuarios con ese username"})
     }
 }
+
+// Hook pre para eliminar referencia de empresa
+userSchema.pre('remove', async function(next) {
+    if (this.empresa) {
+        await this.model('Empresa').updateOne(
+            { _id: this.empresa },
+            { $pull: { students: this._id } }
+        );
+    }
+    next();
+});
 
 
 module.exports = User

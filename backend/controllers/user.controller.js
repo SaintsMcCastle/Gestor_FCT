@@ -16,32 +16,6 @@ function wrapAsync(fn) {
 }
 
 
-// exports.getUserPicture = wrapAsync(async (req, res, next) => {
-//     try{
-//         const userId = req.params.userId;
-//         const user = await UserModel.findById(userId);
-        
-//         if (!user) {
-//             return res.status(404).json({ message: 'Usuario no encontrado' });
-//         }
-  
-//         if (!user.picture) {
-//             return res.status(404).json({ message: 'El usuario no tiene una imagen asociada' });
-//         }
-  
-//         // Decodificar la imagen base64 y enviarla en la respuesta
-//         const img = Buffer.from(user.picture, 'base64');
-//         res.writeHead(200, {
-//             'Content-Type': 'image/jpg',
-//             'Content-Length': img.length
-//         });
-//         res.end(img);
-  
-//      }  catch (error) {
-//         console.error('Error al obtener la imagen del usuario:', error);
-//         return res.status(500).json({ error: 'Error interno del servidor' });
-//     }
-// }); 
 
 exports.getUserPicture = wrapAsync(async (req, res, next) => {
     try {
@@ -106,7 +80,6 @@ exports.getUserRole = wrapAsync(async (req, res, next) => {
         return res.status(500).json({ error: 'Error interno del servidor' });
     }
 });
-
 
 // Mostrar formulario para editar un usuario
 exports.loadEdit = wrapAsync(async function (req, res) {
