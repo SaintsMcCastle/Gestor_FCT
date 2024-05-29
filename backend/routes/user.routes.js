@@ -31,7 +31,7 @@ router.get("/:id/view", authJwt.verifyToken, userCtrl.loadView);
 // Borrar un usuario (solo para admin)
 router.delete("/admin/users/:id", [authJwt.verifyToken, authJwt.isAdmin], adminCtrl.deleteById);
 
-// Mostrar formulario de edición de usuario (solo para el usuario actual, admin o profesor)
+// Mostrar formulario de edición de usuario (solo para el admin)
 router.get("/:id/edit", authJwt.verifyToken, userCtrl.loadEdit);
 
 // Editar un usuario (solo para el usuario actual, admin o profesor)

@@ -145,7 +145,7 @@ exports.findEmpresas = wrapAsync(async (req, res, next) => {
 
 exports.loadLinkStudents = wrapAsync(async function (req, res) {
     const companies = await EmpresaModel.find();
-    const students = await UserModel.find();
+    const students = await UserModel.find({ empresa: null }); // Filtra los estudiantes que no tienen empresa
     res.render('linkStudents.ejs', { companies, students });
 });
 
@@ -155,7 +155,7 @@ exports.linkStudents = wrapAsync(async function (req, res) {
     try {
         const company = await EmpresaModel.findById(companyId);
         if (!company) {
-            return res.status(404).send({ message: "Company not found" });
+            return res.status(404).send({ message: "Empresa no encontrada" });
         }
 
         // Asegurarse de que studentIds es un array
@@ -203,14 +203,11 @@ exports.linkStudents = wrapAsync(async function (req, res) {
     }
 });
 
-// Controlador para eliminar un estudiante de una empresa
 exports.desvincularEstudiante = wrapAsync(async function (req, res) {
     const { empresaId, estudianteId } = req.params;
 
     try {
-        // Desvincular al estudiante de la empresa y del campo empresa del usuario
         await EmpresaModel.desvincularEstudiante(empresaId, estudianteId);
-
         res.status(200).json({ message: "Estudiante desvinculado exitosamente de la empresa" });
     } catch (error) {
         res.status(500).json({ message: error.message });

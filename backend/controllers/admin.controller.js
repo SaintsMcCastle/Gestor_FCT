@@ -78,7 +78,12 @@ exports.create = wrapAsync(async function (req, res) {
             // Eliminar el archivo temporal de la imagen cargada
             await fs.unlink(req.file.path); // Usar await para esperar a que fs.unlink se complete
         } else {
-            console.log("No hay foto proporcionada");
+            console.log("no hay foto")
+            const defaultImagePath = path.join(__dirname, "../../frontend/public/img/pred.jpg");
+            const defaultImageData = await fs.readFile(defaultImagePath);
+            const base64DefaultImage = defaultImageData.toString('base64');
+            newUser.picture = base64DefaultImage;
+            console.log("No se proporcionó una imagen, usando la imagen predeterminada");
         }
 
         // Buscar y asignar roles si se proporcionan

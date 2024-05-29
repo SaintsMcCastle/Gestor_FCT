@@ -70,14 +70,18 @@ User.create = async function(newUser,result){
     })
 }
 
-User.findByUsername = async function(username_param, result){
-    const userFound = await User.findOne({ username: username_param})
-    if(userFound){
-        result(userFound,null)
-    }else{
-        result(null, {"err":"No hay usuarios con ese username"})
+User.findByUsername = async function(username_param, result) {
+    try {
+        const userFound = await User.findOne({ username: username_param });
+        if (userFound) {
+            result(userFound, null);
+        } else {
+            result(null, { err: "No hay usuarios con ese username" });
+        }
+    } catch (error) {
+        result(null, { err: "Error interno del servidor" });
     }
-}
+};
 
 // Hook pre para eliminar referencia de empresa
 userSchema.pre('remove', async function(next) {

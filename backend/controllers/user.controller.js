@@ -90,7 +90,7 @@ exports.loadEdit = wrapAsync(async function (req, res) {
 
 exports.edit = async function(req, res) {
     const { id } = req.params;
-    const { username, password, confirmPassword, firstName, direccion, email } = req.body;
+    const { username, password, confirmPassword, firstName, direccion, email, roles } = req.body;
 
     try {
         // Verificar que las contraseñas coincidan
@@ -104,12 +104,17 @@ exports.edit = async function(req, res) {
             hashedPassword = await bcrypt.hash(password, 12);
         }
 
+        // Convertir los roles de strings a ObjectIds
+        const foundRoles = await RoleModel.find({ name: { $in: roles } });
+        const roleIds = foundRoles.map(role => role._id);
+
         // Crear un objeto con los campos a actualizar
         const updateFields = {
             username,
             firstName,
             direccion,
             email,
+            roles: roleIds, // Almacenar los ObjectIds de los roles
             ...(password && { password: hashedPassword }) // Solo incluir la contraseña si se ha proporcionado
         };
 
@@ -128,10 +133,11 @@ exports.edit = async function(req, res) {
             return res.status(404).send({ message: "Usuario no encontrado" });
         }
 
-        res.redirect(`/api/v1/users/${user._id}/view`); // Redirige a donde quieras después de editar
+        res.json({ message: "Usuario actualizado correctamente", redirect: `/api/v1/users/${user._id}/view` });
     } catch (error) {
         res.status(500).send({ message: error.message });
-}};
+    }
+};
 
 
 exports.loadView = wrapAsync(async function (req, res) {

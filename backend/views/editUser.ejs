@@ -9,59 +9,45 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/edit.css">
     <link rel="stylesheet" href="/css/footer.css">
-
-    <style>
-        .form-group {
-            position: relative;
-        }
-
-        .form-group i {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
-
-        .form-group input[type="password"] {
-            padding-right: 30px;
-        }
-    </style>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="/img/logo_Color_IES.png" alt="Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="/api/v1/home/main">Inicio</a></li>
-                <li><a href="#">Acerca de</a></li>
-                <li><a href="/api/v1/users/admin/userlist">Listado de Usuarios</a></li> 
-                <li><a href="/api/v1/empresas/admin/companylist">Listado de Empresas</a></li> 
-                <li><a href="/api/v1/empresas/linkStudents">Vincular alumnos con empresas</a></li>
-                <li><a id="contactoLink" href="/api/v1/home/contact">Contacto</a></li>
-            </ul>
-        </nav>
-        <div class="user">
-            <img id="userImage" src="#" alt="Usuario">
-            <ul class="dropdown" id="userDropdown">
-                <li><a href="#">Detalles</a></li>
-                <li>
-                    <form id="logoutForm" action="/api/v1/auth/logout" method="post">
-                        <button type="submit" id="logoutButton">Cerrar Sesión</button>
-                    </form>
-                </li>
-            </ul>
+        <div class="header-container">
+            <div class="logo">
+                <img src="/img/logo_Color_IES.png" alt="Logo">
+            </div>
+            <div class="menu-container">
+                <div class="menu-toggle">☰</div>
+                <nav>
+                    <ul>
+                        <li><a href="/api/v1/home/main">Inicio</a></li>
+                        <li><a href="#">Acerca de</a></li>
+                        <li><a id="userListLink" href="/api/v1/users/admin/userlist">Listado de Usuarios</a></li> 
+                        <li><a id="empresasListLink" href="/api/v1/empresas/admin/companylist">Listado de Empresas</a></li> 
+                        <li><a id="vincularLink" href="/api/v1/empresas/linkStudents">Vincular alumnos con empresas</a></li>
+                        <li><a id="contactoLink" href="/api/v1/home/contact">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="user">
+                <img id="userImage" src="#" alt="Usuario">
+                <ul class="dropdown" id="userDropdown"> 
+                    <li><a href="#">Detalles</a></li>
+                    <li>
+                        <form id="logoutForm" action="/api/v1/auth/logout" method="post"> 
+                            <button type="submit" id="logoutButton">Cerrar Sesión</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
         </div>
     </header>
-
     <!-- Contenido principal,Muchas cosas por modificar todavia,ENCONTRAR FALLO DE ACTUALIZAR -->
     <!-- Contenido principal -->
     <main>
         <div class="container">
             <h1>Editar Usuario</h1>
-            <form action="/api/v1/users/<%= usuario._id %>?_method=PATCH" method="POST" enctype="multipart/form-data">
+            <form id="editForm" action="/api/v1/users/<%= usuario._id %>?_method=PATCH" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="username">Nombre de Usuario:</label>
                     <input type="text" id="username" name="username" value="<%= usuario.username %>" required>
@@ -106,6 +92,13 @@
                     </div>
                 </div>
 
+                <label for="roles">Roles:</label>
+                    <select name="roles" id="roles">
+                    <option value="admin">ADMIN</option>
+                    <option value="profesor">PROFESOR</option>
+                    <option value="alumno" selected>ALUMNO</option>
+                </select>
+
                 <div class="form-group">
                     <button type="submit" class="btn">Guardar Cambios</button>
                 </div>
@@ -137,6 +130,46 @@
     </footer>
 
     <!-- Scripts -->
+    <!-- SweetAlert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- JavaScript -->
+    <script>
+        document.getElementById('editForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            const url = this.action;
+            const method = this.method.toUpperCase();
+
+            try {
+                const response = await fetch(url, {
+                    method: method,
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                   
+                    throw new Error(data.message);
+                }
+
+                // Show success message using SweetAlert
+                swal("Éxito", "Usuario editado correctamente", "success")
+                .then(() => {
+                    // Redirect to user view page after closing SweetAlert
+                    window.location.href = data.redirect;
+                });
+            } catch (error) {
+                if (error.message.includes("duplicate key error collection")) {
+                    swal("Error", "Nombre de usuario/email ya existente, por favor prueba otro", "error");
+                } else {
+                    swal("Error", error.message, "error");
+                }
+            }
+        });
+    </script>
     <script>
         // Script para mostrar y ocultar la contraseña
         document.getElementById('togglePassword').addEventListener('click', function() {
@@ -171,5 +204,9 @@
     </script>
     <script src="/js/getPhoto.js"></script>
     <script src="/js/getRole.js"></script>
+    <script src="/js/navBar.js"></script>
+    <script src="/js/logout.js"></script>
+
+
 </body>
 </html>

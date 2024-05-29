@@ -69,51 +69,19 @@ exports.register = wrapAsync(async function(req, res) {
 
         // Guardar el usuario en la base de datos
         const savedUser = await newUser.save();
-        console.log(savedUser);
-        return res.status(200).redirect(`/api/${version}/auth/login`);
+        return res.status(200).json({ message: 'Usuario registrado exitosamente' });
     } catch (e) {
+        if (e.code === 11000) {
+            return res.status(400).json({ message: 'El nombre de usuario ya está en uso' });
+        }
         console.error('Error al registrar el usuario:', e);
-        return res.status(500).json({ error: e.message });
+        return res.status(500).json({ message: 'Error interno del servidor' });
     }
 });
 
 
 
 
-// exports.login=wrapAsync(async function(req,res){
-//     const { username, password } = req.body   
-//     const pwd_textoPlano = password                            // El pwd_texto plano es la contraseña que introducimos en el formulario tal cual
-//     let userFoundData = null
-
-//     await UserModel.findByUsername(username,function(userFound,err){
-//         if(err){
-//             res.status(500).json(err)
-//         }else{
-//             userFoundData = userFound
-//             console.log(userFoundData)
-//         }
-//     })
-    
-//     if(userFoundData){
-//         const validado = await bcrypt.compare(pwd_textoPlano,userFoundData.password) //Si el usuario existe se compara la contraseña de texto plano con la contraseña encriptada de la base de datos
-//         if(validado){
-//             const token = jwt.sign({ id: userFoundData._id},claveJWT,{
-//                 expiresIn: 86400 //24h
-//             })
-
-//             // Crear una cookie con el ID del usuario
-//             res.cookie('userId', userFoundData._id, { maxAge: 86400 * 1000, httpOnly: true });
-
-//             req.session.user=userFoundData
-//             req.session.token = token
-
-//             console.log(token)
-//             res.status(200).set('x-auth-token', token).redirect(`/api/${version}/home/main?userId=${userFoundData._id}`);
-//         }else{
-//             res.status(401).json({"err":"Usuario y/o contraseña no correctos"})
-//         }
-//     }
-// })
 
 
 exports.login = wrapAsync(async function(req, res) {
